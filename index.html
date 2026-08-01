@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Александр Приязников — Fullstack-разработчик</title>
+    <meta name="description" content="Fullstack-разработчик. Python, JavaScript, AI-агенты. Создатель ФлаерГусев и Jastas Hub.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0e27;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.05) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00ffff 0%, #ff00ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: #a0a0a0;
+            margin-bottom: 2rem;
+        }
+        
+        .hero .description {
+            font-size: 1.1rem;
+            color: #808080;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 0 10px;
+            background: linear-gradient(135deg, #00ffff 0%, #0080ff 100%);
+            color: #0a0e27;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #00ffff;
+            color: #00ffff;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #00ffff;
+        }
+        
+        .about {
+            background: #0f1430;
+        }
+        
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #c0c0c0;
+            text-align: center;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: #1a1f3a;
+            border: 1px solid #2a2f4a;
+            border-radius: 12px;
+            padding: 30px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ffff;
+        }
+        
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00ffff;
+        }
+        
+        .project-card p {
+            color: #a0a0a0;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-card a {
+            color: #ff00ff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .project-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .skills {
+            background: #0f1430;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #ff00ff;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            padding: 8px 0;
+            color: #c0c0c0;
+            border-bottom: 1px solid #2a2f4a;
+        }
+        
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .contact {
+            text-align: center;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .contact-links a {
+            color: #00ffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border: 1px solid #00ffff;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        
+        .contact-links a:hover {
+            background: rgba(0, 255, 255, 0.1);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #606060;
+            border-top: 1px solid #2a2f4a;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero .subtitle { font-size: 1.2rem; }
+            section h2 { font-size: 2rem; }
+            .btn { display: block; margin: 10px auto; max-width: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Александр Приязников</h1>
+            <p class="subtitle">Fullstack-разработчик</p>
+            <p class="description">
+                Создаю надёжные веб-приложения, AI-агентов и локальные системы. 
+                От идеи до рабочего продукта — быстро, чисто, без лишнего.
+            </p>
+            <a href="#projects" class="btn">Мои проекты</a>
+            <a href="#contact" class="btn btn-outline">Связаться</a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <h2>Обо мне</h2>
+            <p class="about-text">
+                Я разработчик, который ценит чистый код и работающие решения. 
+                Специализируюсь на Python (FastAPI), JavaScript (React, Vite) и интеграции AI-моделей. 
+                Строю продукты, которые решают реальные задачи — от локальных каталогов до персональных AI-экосистем.
+            </p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Проекты</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>ФлаерГусев</h3>
+                    <p>Локальный SEO-оптимизированный каталог-агрегатор для города Гусев. Чистый HTML/JS, интеграция с Яндекс.Метрикой, монетизация через премиум-размещение.</p>
+                    <a href="https://gusev-flyer.ru" target="_blank">gusev-flyer.ru →</a>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Jastas Hub</h3>
+                    <p>Персональная AI-экосистема и админ-панель. FastAPI + React. Управление локальной сетью, AI-агентами, задачами, мониторинг оборудования и генерация изображений.</p>
+                    <a href="https://github.com/jektor27" target="_blank">GitHub →</a>
+                </div>
+                
+                <div class="project-card">
+                    <h3>AI-помощник для бизнеса</h3>
+                    <p>Готовое десктопное приложение (Python + PyInstaller) для учёта финансов, управления арендой и OCR-распознавания чеков. Коммерческий продукт под ключ.</p>
+                    <a href="#">Подробнее →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2>Навыки</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <ul class="skill-list">
+                        <li>Python (FastAPI, SQLAlchemy)</li>
+                        <li>REST API, JWT, OAuth2</li>
+                        <li>SQLite, PostgreSQL</li>
+                        <li>Pydantic, Alembic</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <ul class="skill-list">
+                        <li>JavaScript (ES6+)</li>
+                        <li>React 18, Vite</li>
+                        <li>HTML5, CSS3 (адаптив)</li>
+                        <li>Alpine.js, HTMX</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>AI & Интеграции</h3>
+                    <ul class="skill-list">
+                        <li>Локальные LLM (Ollama, LM Studio)</li>
+                        <li>API: OpenAI, GigaChat, DeepSeek</li>
+                        <li>Промпт-инжиниринг</li>
+                        <li>OCR, генерация изображений</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>DevOps & Инструменты</h3>
+                    <ul class="skill-list">
+                        <li>Git, GitHub</li>
+                        <li>Docker, Replit</li>
+                        <li>Linux, SSH</li>
+                        <li>PyInstaller (сборка .exe)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Контакты</h2>
+            <p style="color: #a0a0a0; font-size: 1.1rem;">Открыт к сотрудничеству и интересным проектам</p>
+            <div class="contact-links">
+                <a href="https://github.com/jektor27" target="_blank">GitHub</a>
+                <a href="mailto:pryazhnikov24@yandex.ru">Email</a>
+                <a href="https://vk.com/pryazhnikov2008" target="_blank">VK</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Александр Приязников. Все права защищены.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
