@@ -114,12 +114,36 @@
             background: #0f1430;
         }
         
-        .about-text {
-            max-width: 800px;
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            max-width: 1000px;
             margin: 0 auto;
-            font-size: 1.1rem;
+        }
+        
+        .about-photo {
+            flex-shrink: 0;
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 3px solid #00ffff;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+        }
+        
+        .about-text {
+            font-size: 1.05rem;
             color: #c0c0c0;
-            text-align: center;
+            line-height: 1.8;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .about-text strong {
+            color: #00ffff;
         }
         
         .projects-grid {
@@ -230,6 +254,8 @@
             .hero .subtitle { font-size: 1.2rem; }
             section h2 { font-size: 2rem; }
             .btn { display: block; margin: 10px auto; max-width: 250px; }
+            .about-content { flex-direction: column; text-align: center; }
+            .about-photo { width: 250px; height: 250px; }
         }
     </style>
 </head>
@@ -251,11 +277,36 @@
     <section class="about" id="about">
         <div class="container">
             <h2>Обо мне</h2>
-            <p class="about-text">
-                Я разработчик, который ценит чистый код и работающие решения. 
-                Специализируюсь на Python (FastAPI), JavaScript (React, Vite) и интеграции AI-моделей. 
-                Строю продукты, которые решают реальные задачи — от локальных каталогов до персональных AI-экосистем.
-            </p>
+            <div class="about-content">
+                <img src="photo.jpg" alt="Александр Приязников" class="about-photo">
+                <div class="about-text">
+                    <p>
+                        Для меня программирование — это не просто работа. Это <strong>искусство 
+                        превращать хаос в порядок</strong>, а идеи — в работающие системы.
+                    </p>
+                    <p>
+                        Я верю, что хороший код должен быть <strong>невидимым</strong> — он просто работает, 
+                        не требуя внимания. Поэтому я пишу чисто, тестирую тщательно и не иду на компромиссы 
+                        с качеством.
+                    </p>
+                    <p>
+                        Специализируюсь на создании <strong>полноценных продуктов</strong>: от бэкенда 
+                        на Python (FastAPI) до фронтенда на React, от интеграции AI-моделей до развёртывания 
+                        на серверах. Мне важно видеть весь цикл — от первой строчки кода до работающего 
+                        приложения в руках пользователя.
+                    </p>
+                    <p>
+                        <strong>Мои проекты — это моя философия:</strong><br>
+                        • <strong>ФлаерГусев</strong> — помогаю локальному бизнесу находить клиентов<br>
+                        • <strong>Jastas Hub</strong> — создал персональную AI-экосистему для управления своей цифровой жизнью<br>
+                        • <strong>Коммерческие приложения</strong> — автоматизирую рутину, чтобы люди могли сосредоточиться на важном
+                    </p>
+                    <p>
+                        Открыт к сотрудничеству и интересным вызовам. Если вам нужен разработчик, 
+                        который <strong>думает о продукте, а не просто пишет код</strong> — давайте работать вместе.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
