@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обо мне — Пряжников Александр, fullstack-разработчик из Гусева</title>
+    <meta name="description" content="Биография Пряжникова Александра Ивановича: путь в разработку, стек Python, FastAPI, React, AI. Проекты Jastas, Jektor, ФлаерГусев, достижения и ценности.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://pryazhnikov.ru/about.html">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "Обо мне — Пряжников Александр Иванович",
+      "url": "https://pryazhnikov.ru/about.html",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Пряжников Александр Иванович",
+        "jobTitle": "Fullstack-разработчик",
+        "description": "Fullstack-разработчик и предприниматель из Гусева. Создатель AI-ассистента Jastas, браузера Jektor и каталога ФлаерГусев.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Гусев",
+          "addressRegion": "Калининградская область",
+          "addressCountry": "RU"
+        },
+        "sameAs": [
+          "https://github.com/jektor27",
+          "https://vk.com/pryazhnikov2008",
+          "https://ok.ru/aleksandr.pryazhnikov",
+          "https://t.me/pryazhnikov_dev"
+        ]
+      }
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0e27;
+            --bg-2: #0f1430;
+            --card: #1a1f3a;
+            --border: #2a2f4a;
+            --text: #e0e0e0;
+            --muted: #a0a0a0;
+            --dim: #808080;
+            --cyan: #00ffff;
+            --pink: #ff00ff;
+            --mono: 'Cascadia Code', 'Consolas', 'JetBrains Mono', monospace;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        nav {
+            background: var(--bg-2);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        nav ul { display: flex; justify-content: center; gap: 30px; list-style: none; flex-wrap: wrap; }
+        nav a { color: var(--cyan); text-decoration: none; font-weight: 600; }
+        nav a:hover { text-decoration: underline; }
+        .page-header {
+            padding: 60px 0 30px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg) 0%, #1a1f3a 100%);
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--cyan) 0%, var(--pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .page-header .subtitle { color: var(--muted); font-size: 1.2rem; margin-top: 0.5rem; }
+        .page-header .tag {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            color: var(--green, #3ddc97);
+            border: 1px solid rgba(61, 220, 151, 0.4);
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-top: 1rem;
+            background: rgba(61, 220, 151, 0.08);
+        }
+        section { padding: 60px 0; }
+        section h2 { font-size: 2rem; margin-bottom: 2rem; color: var(--cyan); }
+        section:nth-of-type(even) { background: var(--bg-2); }
+        .bio-photo {
+            float: left;
+            width: 260px;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 3px solid var(--cyan);
+            margin: 0 30px 20px 0;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+        }
+        .bio-text { font-size: 1.05rem; color: #c0c0c0; }
+        .bio-text p { margin-bottom: 1.2rem; }
+        .bio-text strong { color: var(--cyan); }
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .project-card h3 { color: var(--cyan); font-size: 1.3rem; margin-bottom: 0.8rem; }
+        .project-card .stack { font-family: var(--mono); font-size: 0.8rem; color: var(--pink); margin-bottom: 0.6rem; }
+        .project-card p { color: var(--muted); margin-bottom: 0.8rem; }
+        .project-card a { color: var(--cyan); text-decoration: none; font-weight: 600; }
+        .project-card a:hover { text-decoration: underline; }
+        ul.achievements { list-style: none; }
+        ul.achievements li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            color: #c0c0c0;
+        }
+        ul.achievements li::before { content: '✓ '; color: var(--cyan); font-weight: 700; }
+        ul.timeline { list-style: none; }
+        ul.timeline li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            color: #c0c0c0;
+        }
+        ul.timeline li::before { content: '▸ '; color: var(--pink); font-weight: 700; }
+        .values { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .value-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .value-card h3 { color: var(--cyan); font-size: 1.1rem; margin-bottom: 0.6rem; }
+        .value-card p { color: var(--muted); font-size: 0.95rem; }
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #606060;
+            border-top: 1px solid var(--border);
+        }
+        footer a { color: #808080; text-decoration: none; }
+        footer a:hover { color: var(--cyan); }
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 1.8rem; }
+            section h2 { font-size: 1.6rem; }
+            .bio-photo { float: none; display: block; margin: 0 auto 20px; width: 220px; height: 220px; }
+            nav ul { gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">Обо мне</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Пряжников Александр Иванович</h1>
+            <p class="subtitle">Fullstack-разработчик · AI-энтузиаст · Предприниматель</p>
+            <span class="tag">$ whoami → python · react · ai</span>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <h2>Биография</h2>
+            <div class="bio-text">
+                <img src="photo.jpg" alt="Пряжников Александр Иванович — fullstack-разработчик и предприниматель" class="bio-photo">
+                <p>
+                    <strong>Пряжников Александр Иванович</strong> — fullstack-разработчик и предприниматель
+                    из Гусева (Калининградская область). Пишу на <strong>Python</strong> и
+                    <strong>TypeScript</strong>, проектирую backend на <strong>FastAPI</strong>,
+                    строю интерфейсы на <strong>React</strong> и встраиваю <strong>нейросети</strong>
+                    в реальные продукты.
+                </p>
+                <p>
+                    Я — самоучка в лучшем смысле этого слова: начал с задач автоматизации, а сегодня
+                    разрабатываю собственных <strong>AI-агентов</strong>. Мой главный принцип —
+                    технология должна решать конкретную задачу человека, а не существовать ради самой себя.
+                </p>
+                <p>
+                    Являюсь создателем <strong>Jastas</strong> — персонального AI-ассистента и экосистемы
+                    автоматизации, разработал браузер <strong>Jektor</strong> с оптимизацией памяти в 6 раз
+                    и запустил <strong>ФлаерГусев</strong> — локальный каталог бизнеса, поддерживающий
+                    малое предпринимательство региона.
+                </p>
+                <p>
+                    Сейчас в фокусе — развитие AI-экосистемы Jastas, работа с локальными LLM,
+                    генерацией изображений и автоматизацией рутинных задач для бизнеса.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Путь в разработку</h2>
+            <ul class="timeline">
+                <li><strong>Техническая база</strong> — инженерная подготовка, работа с автоматикой, схемами и контрольно-измерительными приборами. Навык «сделать руками, чтобы работало» — здесь и начался.</li>
+                <li><strong>Первые скрипты</strong> — Python для автоматизации рутинных задач: обработка данных, работа с API, сетевые утилиты.</li>
+                <li><strong>Backend</strong> — FastAPI, SQLAlchemy, SQLite/PostgreSQL: собственные REST-сервисы и архитектура приложений.</li>
+                <li><strong>Frontend</strong> — React, TypeScript, Vite: современные интерфейсы поверх собственных API.</li>
+                <li><strong>AI-разработка</strong> — интеграция LLM (GigaChat, OpenAI, DeepSeek, локальные модели), промпт-инжиниринг, AI-агенты, OCR и генерация изображений.</li>
+                <li><strong>Продукты</strong> — превращение кода в готовые продукты: Jastas, Jektor, ФлаерГусев, сетевой монитор.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Образование</h2>
+            <ul class="timeline">
+                <li><strong>Электромонтажный колледж</strong> — техническая база, основы автоматики и электроники.</li>
+                <li><strong>Самообразование</strong> — Python, React, FastAPI: постоянно учусь и применяю на практике в реальных проектах.</li>
+                <li><strong>AI-инжиниринг</strong> — работа с LLM API, промпт-инжиниринг и практика создания AI-агентов.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Проекты</h2>
+            <div class="project-card">
+                <h3>Jastas — персональный AI-ассистент</h3>
+                <div class="stack">FastAPI · React · AI/LLM</div>
+                <p>Создан с нуля. Управление задачами, AI-агенты, мониторинг сети, генерация изображений — персональная экосистема автоматизации.</p>
+                <a href="https://github.com/jektor27" target="_blank" rel="nofollow noopener">GitHub →</a>
+            </div>
+            <div class="project-card">
+                <h3>Jektor Browser</h3>
+                <div class="stack">Оптимизация · AI-ready</div>
+                <p>Лёгкий и быстрый браузер, оптимизированный для работы с AI-сервисами. Оптимизация памяти в 6 раз.</p>
+            </div>
+            <div class="project-card">
+                <h3>ФлаерГусев</h3>
+                <div class="stack">HTML · JS · SEO</div>
+                <p>Локальный каталог бизнеса Гусева: 23+ магазина, 8 категорий. Помогает жителям находить услуги, поддерживает малый бизнес.</p>
+                <a href="https://gusev-flyer.ru" target="_blank" rel="nofollow noopener">gusev-flyer.ru →</a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Достижения</h2>
+            <ul class="achievements">
+                <li>Создал AI-ассистента Jastas с нуля — от идеи до работающей экосистемы</li>
+                <li>Разработал браузер Jektor с оптимизацией памяти в 6 раз</li>
+                <li>Запустил каталог местного бизнеса ФлаерГусев: 23+ магазина, 8 категорий</li>
+                <li>Подтвердил сайт в Яндекс.Вебмастер и Google Search Console (SEO)</li>
+                <li>Собрал собственного AI-агента с локальными LLM и генерацией изображений</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Что для меня важно</h2>
+            <div class="values">
+                <div class="value-card">
+                    <h3>Польза, а не код</h3>
+                    <p>Технологии должны делать жизнь проще. Сначала — задача, потом — решение.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Результат</h3>
+                    <p>Довожу проекты до конца: от идеи до запущенного продукта, который работает каждый день.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Постоянный рост</h3>
+                    <p>Учусь непрерывно: новые модели, инструменты и подходы — в дело, а не в закладки.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Простота</h3>
+                    <p>Лучшее решение — простое. Код читается людьми, интерфейсы понятны пользователям.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Александр Пряжников · <a href="https://pryazhnikov.ru">pryazhnikov.ru</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
