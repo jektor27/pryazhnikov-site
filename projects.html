@@ -7,6 +7,7 @@
     <meta name="description" content="Проекты Python-разработчика Пряжникова Александра Ивановича: AI-ассистент Jastas, браузер Jektor, каталог ФлаерГусев, сетевой монитор и AI-помощник для бизнеса.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://jektor27.github.io/pryazhnikov-site/projects.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -94,6 +95,18 @@
         }
         .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3); }
         .btn-outline { background: transparent; border: 2px solid var(--cyan); color: var(--cyan); }
+        .case {
+            margin-top: 60px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+        }
+        .case h2 { color: var(--cyan); font-size: 1.8rem; margin-bottom: 1.5rem; }
+        .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+        .case-item h3 { color: var(--pink); font-family: var(--mono); font-size: 0.95rem; margin-bottom: 0.6rem; }
+        .case-item p { color: var(--muted); font-size: 0.98rem; }
+        .case-item strong { color: var(--cyan); }
         footer {
             text-align: center;
             padding: 30px 0;
@@ -138,7 +151,8 @@
                     <div class="stack">FastAPI · React · SQLAlchemy · AI/LLM</div>
                     <p>
                         Персональная AI-экосистема и админ-панель: управление задачами, AI-агенты,
-                        мониторинг локальной сети, работа с LLM API и генерация изображений.
+                        защищённое хранилище ключей (Vault), профили, мониторинг здоровья,
+                        локальной сети и работа с LLM API.
                     </p>
                     <a href="https://github.com/jektor27" target="_blank" rel="nofollow noopener">GitHub →</a>
                 </div>
@@ -160,7 +174,7 @@
                     <div class="role">создатель · SEO-специалист</div>
                     <div class="stack">HTML · JavaScript · SEO · Яндекс.Метрика</div>
                     <p>
-                        Локальный SEO-оптимизированный каталог бизнеса Гусева: 23+ магазина, 8 категорий.
+                        Локальный SEO-оптимизированный каталог бизнеса Гусева: 52 магазина, 12 категорий.
                         Монетизация через премиум-размещение. Поддерживает малый бизнес региона.
                     </p>
                     <a href="https://gusev-flyer.ru" target="_blank" rel="nofollow noopener">gusev-flyer.ru →</a>
@@ -189,6 +203,30 @@
                 </div>
             </div>
 
+            <div class="case" id="case-jastas">
+                <h2>Кейс: Jastas — AI-ассистент под ключ</h2>
+                <div class="case-body">
+                    <div class="case-grid">
+                        <div class="case-item">
+                            <h3>Задача</h3>
+                            <p>Собрать личного AI-ассистента, который ведёт задачи, хранит ключи и данные
+                            в безопасности и автоматизирует рутину — без сторонних закрытых сервисов.</p>
+                        </div>
+                        <div class="case-item">
+                            <h3>Решение</h3>
+                            <p>Backend на <strong>FastAPI</strong> с SQLite, веб-интерфейс на <strong>React</strong>,
+                            AI-агенты поверх LLM API. Встроены шифрованное хранилище Vault, профили пользователя,
+                            мониторинг здоровья и сети.</p>
+                        </div>
+                        <div class="case-item">
+                            <h3>Результат</h3>
+                            <p>Работающая экосистема: секреты и токены хранятся зашифрованными, задачи
+                            ведутся в одном месте, агенты выполняют рутину. Проект развивается и используется ежедневно.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="cta">
                 <h2>Есть идея? Давай её построим.</h2>
                 <p>Расскажи о своей задаче — предложу решение и оценю сроки.</p>
@@ -203,6 +241,16 @@
             <p>© 2026 Александр Пряжников · <a href="https://pryazhnikov.ru">pryazhnikov.ru</a></p>
         </div>
     </footer>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111176884', 'ym');
+        ym(111176884, 'init', {clickmap:true, trackLinks:true, accurateTrackBounce:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/111176884" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 
 </body>
 </html>

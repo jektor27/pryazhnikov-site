@@ -8,11 +8,12 @@
     <meta name="keywords" content="Python-разработчик, разработчик, fullstack, Python, FastAPI, React, JavaScript, TypeScript, AI, нейросети, Гусев, Калининград, Jastas, Jektor, ФлаерГусев">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://jektor27.github.io/pryazhnikov-site/">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Пряжников Александр — Python-разработчик, AI-инженер">
     <meta property="og:description" content="Python-разработчик и AI-инженер из Гусева. Python, FastAPI, React, TypeScript, нейросети. Создаёт продукты, которые работают.">
     <meta property="og:url" content="https://jektor27.github.io/pryazhnikov-site/">
-    <meta property="og:image" content="photo.jpg">
+    <meta property="og:image" content="https://jektor27.github.io/pryazhnikov-site/photo.jpg">
     <meta property="og:locale" content="ru_RU">
     <script type="application/ld+json">
     {
@@ -262,6 +263,22 @@
         .project-card a { color: var(--cyan); text-decoration: none; font-weight: 600; }
         .project-card a:hover { text-decoration: underline; }
 
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .service-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .service-card:hover { transform: translateY(-4px); border-color: var(--pink); }
+        .service-card .ico { font-size: 1.6rem; margin-bottom: 0.7rem; }
+        .service-card h3 { font-size: 1.15rem; margin-bottom: 0.6rem; color: var(--cyan); }
+        .service-card p { color: var(--muted); font-size: 0.98rem; line-height: 1.6; }
+        .services-note { text-align: center; color: var(--dim); margin-top: 2rem; font-size: 0.95rem; }
+        .services-note a { color: var(--cyan); text-decoration: none; font-weight: 600; }
+        .services-note a:hover { text-decoration: underline; }
+
         .contact { text-align: center; }
         .contact-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 2rem; }
         .contact-links a {
@@ -383,8 +400,8 @@
                     </p>
                     <div class="about-stats">
                         <div class="stat">
-                            <div class="num">3+</div>
-                            <div class="lbl">продукта запущено</div>
+                            <div class="num">5</div>
+                            <div class="lbl">продуктов запущено</div>
                         </div>
                         <div class="stat">
                             <div class="num">20+</div>
@@ -463,6 +480,40 @@
         </div>
     </section>
 
+    <section id="services">
+        <div class="container">
+            <h2>Чем могу помочь вашему бизнесу</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="ico">🤖</div>
+                    <h3>Разработка AI-ассистентов и чат-ботов</h3>
+                    <p>Создаю умных помощников, которые отвечают клиентам, обрабатывают заявки и помогают сотрудникам с рутинными задачами. Работают круглосуточно, без выходных и перерывов.</p>
+                </div>
+                <div class="service-card">
+                    <div class="ico">⚙️</div>
+                    <h3>Автоматизация бизнес-процессов на Python</h3>
+                    <p>Нахожу повторяющиеся задачи в вашей работе и пишу программы, которые делают их автоматически. Сбор данных, формирование отчётов, отправка уведомлений — всё без ручного труда.</p>
+                </div>
+                <div class="service-card">
+                    <div class="ico">🧠</div>
+                    <h3>Интеграция нейросетей в существующие продукты</h3>
+                    <p>Добавляю возможности современных ИИ в ваши работающие системы. Распознавание документов, генерация текстов, анализ данных — туда, где это реально приносит пользу.</p>
+                </div>
+                <div class="service-card">
+                    <div class="ico">🖥️</div>
+                    <h3>Разработка десктопных приложений</h3>
+                    <p>Делаю программы для Windows и Mac, которые работают прямо на компьютере. Быстро, надёжно, с доступом к локальным файлам и оборудованию — без зависимости от интернета.</p>
+                </div>
+                <div class="service-card">
+                    <div class="ico">🌐</div>
+                    <h3>Веб-разработка на FastAPI, React и TypeScript</h3>
+                    <p>Создаю сайты и веб-сервисы с удобной админкой. От простых лендингов до сложных систем с базами данных и личными кабинетами.</p>
+                </div>
+            </div>
+            <p class="services-note">Заинтересованы? <a href="contacts.html">Расскажите о своей задаче</a> — предложу решение.</p>
+        </div>
+    </section>
+
     <section class="alt" id="projects">
         <div class="container">
             <h2>Проекты</h2>
@@ -470,7 +521,7 @@
                 <div class="project-card">
                     <h3>Jastas</h3>
                     <div class="stack">FastAPI · React · AI</div>
-                    <p>Персональный AI-ассистент и экосистема автоматизации: управление задачами, AI-агенты, мониторинг сети, генерация изображений. Создан с нуля.</p>
+                    <p>Персональный AI-ассистент и экосистема автоматизации: управление задачами, AI-агенты, защищённое хранилище ключей (Vault), профили, мониторинг здоровья и сети. Создан с нуля.</p>
                     <a href="https://github.com/jektor27" target="_blank" rel="nofollow noopener">GitHub →</a>
                 </div>
                 <div class="project-card">
@@ -481,7 +532,7 @@
                 <div class="project-card">
                     <h3>ФлаерГусев</h3>
                     <div class="stack">HTML · JS · SEO</div>
-                    <p>Локальный SEO-оптимизированный каталог бизнеса Гусева: 23+ магазина, 8 категорий, интеграция с Яндекс.Метрикой и монетизация.</p>
+                    <p>Локальный SEO-оптимизированный каталог бизнеса Гусева: 52 магазина, 12 категорий, интеграция с Яндекс.Метрикой и монетизация.</p>
                     <a href="https://gusev-flyer.ru" target="_blank" rel="nofollow noopener">gusev-flyer.ru →</a>
                 </div>
                 <div class="project-card">
@@ -518,6 +569,16 @@
             <p>© 2026 Александр Пряжников · <a href="https://pryazhnikov.ru">pryazhnikov.ru</a></p>
         </div>
     </footer>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111176884', 'ym');
+        ym(111176884, 'init', {clickmap:true, trackLinks:true, accurateTrackBounce:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/111176884" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 
 </body>
 </html>
