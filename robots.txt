@@ -7,4 +7,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://pryazhnikov.ru/sitemap.xml
+Sitemap: https://pryazhnikov-ai.ru/sitemap.xml
