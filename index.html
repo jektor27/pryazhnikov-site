@@ -314,14 +314,14 @@
             text-align: center;
         }
         .studio .tandem-wrap {
-            width: 180px;
+            width: 200px;
             margin: 0 auto 26px;
             background: #0a0a1a;
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 14px 14px 8px;
+            padding: 14px;
         }
-        .studio .tandem { width: 150px; height: auto; display: block; }
+        .studio .tandem { width: 100%; height: auto; display: block; border-radius: 8px; filter: drop-shadow(0 0 24px rgba(233,69,96,0.22)); }
         .ja-badge {
             display: inline-flex; align-items: center; gap: 10px;
             padding: 7px 14px; border-radius: 999px;
@@ -617,31 +617,7 @@
     <section class="studio" id="studio">
         <div class="container studio-inner">
             <div class="tandem-wrap">
-                <svg class="tandem" viewBox="0 0 220 160" aria-hidden="true">
-                    <defs>
-                        <mask id="bc-cut">
-                            <rect x="0" y="0" width="220" height="160" fill="#ffffff"/>
-                            <circle cx="118" cy="80" r="62" fill="#000000"/>
-                        </mask>
-                    </defs>
-                    <circle cx="150" cy="80" r="70" fill="#d4af37" mask="url(#bc-cut)"/>
-                    <g stroke="#e94560" stroke-width="2" opacity="0.9">
-                        <line x1="30" y1="50" x2="70" y2="30"/>
-                        <line x1="70" y1="30" x2="105" y2="55"/>
-                        <line x1="30" y1="50" x2="55" y2="85"/>
-                        <line x1="55" y1="85" x2="105" y2="55"/>
-                        <line x1="55" y1="85" x2="40" y2="120"/>
-                        <line x1="40" y1="120" x2="85" y2="125"/>
-                        <line x1="85" y1="125" x2="105" y2="90"/>
-                        <line x1="105" y1="55" x2="105" y2="90"/>
-                    </g>
-                    <g fill="#e94560">
-                        <circle cx="30" cy="50" r="6"/><circle cx="70" cy="30" r="7"/>
-                        <circle cx="105" cy="55" r="6"/><circle cx="55" cy="85" r="8"/>
-                        <circle cx="40" cy="120" r="6"/><circle cx="85" cy="125" r="7"/>
-                        <circle cx="105" cy="90" r="6"/>
-                    </g>
-                </svg>
+                <img class="tandem" src="img/tandem.png" alt="Jasta и Александр — человек и ИИ, одна команда">
             </div>
             <a class="ja-badge" href="studio.html" title="Студия Jasta & Александра">
                 <span class="ja-mark">J&amp;A</span><span class="ja-label">студия Jasta &amp; Александра</span>
