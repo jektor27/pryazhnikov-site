@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="yandex-verification" content="80a903799e3d48ad" />
+    <title>Студия веб-разработки Jasta & Александр — тандем человека и ИИ | pryazhnikov-ai.ru</title>
+    <meta name="description" content="Студия веб-разработки Jasta & Александр. Сайты, веб-сервисы, AI-ассистенты, автоматизация. Тандем человека и ИИ: человек проектирует и решает, ИИ ускоряет и автоматизирует.">
+    <meta name="keywords" content="студия веб-разработки, разработка сайтов, AI-ассистенты, автоматизация, Python, FastAPI, React, Гусев, Калининград, Jasta, Александр">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://pryazhnikov-ai.ru/studio.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Студия веб-разработки Jasta & Александр">
+    <meta property="og:description" content="Тандем человека и ИИ: сайты, веб-сервисы, AI-ассистенты и автоматизация под ключ.">
+    <meta property="og:url" content="https://pryazhnikov-ai.ru/studio.html">
+    <meta property="og:image" content="https://pryazhnikov-ai.ru/og-studio.svg">
+    <meta property="og:locale" content="ru_RU">
+    <script>
+    if (location.hostname !== 'pryazhnikov-ai.ru') {
+      location.replace('https://pryazhnikov-ai.ru' + location.pathname + location.search + location.hash);
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Jasta & Александр",
+      "alternateName": "J&A",
+      "slogan": "Человек и ИИ — одна команда",
+      "description": "Студия веб-разработки. Тандем человека и ИИ: сайты, веб-сервисы, AI-ассистенты, автоматизация под ключ.",
+      "url": "https://pryazhnikov-ai.ru/studio.html",
+      "founder": {
+        "@type": "Person",
+        "name": "Пряжников Александр Иванович",
+        "jobTitle": "Python-разработчик и AI-инженер",
+        "url": "https://pryazhnikov-ai.ru/"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Гусев",
+        "addressRegion": "Калининградская область",
+        "addressCountry": "RU"
+      },
+      "knowsAbout": ["Python", "FastAPI", "React", "TypeScript", "JavaScript", "AI", "LLM", "OCR", "SQLite", "PostgreSQL", "Git"],
+      "makesOffer": [
+        { "@type": "Offer", "name": "Разработка сайтов и лендингов" },
+        { "@type": "Offer", "name": "Веб-сервисы и кабинеты на FastAPI и React" },
+        { "@type": "Offer", "name": "AI-ассистенты и чат-боты" },
+        { "@type": "Offer", "name": "Автоматизация бизнес-процессов на Python" },
+        { "@type": "Offer", "name": "Десктопные приложения" },
+        { "@type": "Offer", "name": "Интеграция нейросетей" }
+      ]
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a1a;
+            --bg-2: #0f1430;
+            --card: #16213e;
+            --border: #243052;
+            --text: #e8e8f0;
+            --muted: #a5aecb;
+            --dim: #6c7693;
+            --red: #e94560;
+            --gold: #d4af37;
+            --mono: 'Cascadia Code', 'Consolas', 'JetBrains Mono', monospace;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        nav {
+            background: var(--bg-2);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav ul { display: flex; justify-content: center; gap: 30px; list-style: none; flex-wrap: wrap; }
+        nav a { color: #6ecbff; text-decoration: none; font-weight: 600; }
+        nav a:hover { text-decoration: underline; }
+        nav a.active { color: var(--gold); }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a0a1a 0%, #0f1430 60%, #16213e 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: -50%;
+            background:
+                radial-gradient(circle, rgba(233, 69, 96, 0.10) 0%, transparent 55%),
+                radial-gradient(circle at 75% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
+            animation: pulse 7s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.06); opacity: 1; }
+        }
+        .hero-inner { position: relative; z-index: 1; padding: 40px 0; }
+
+        .tandem-wrap {
+            width: 190px;
+            margin: 0 auto 24px;
+            background: #0a0a1a;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 14px 14px 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        .tandem { width: 160px; height: auto; display: block; }
+
+        .ja-badge {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 7px 14px; border-radius: 999px;
+            background: #16213e; border: 1px solid rgba(255,255,255,0.1);
+            text-decoration: none; margin-bottom: 26px;
+            transition: border-color .25s ease, box-shadow .25s ease;
+        }
+        .ja-badge:hover {
+            border-color: rgba(233,69,96,0.5);
+            box-shadow: 0 0 18px rgba(233,69,96,0.25);
+        }
+        .ja-mark {
+            font-size: 12px; font-weight: 800; letter-spacing: 0.5px; color: #ffffff;
+            padding: 3px 8px; border-radius: 8px;
+            border: 1.5px solid transparent;
+            background: linear-gradient(#16213e,#16213e) padding-box,
+                       linear-gradient(135deg,#e94560,#d4af37) border-box;
+        }
+        .ja-label { font-size: 12px; color: #8892b0; }
+
+        .hero h1 {
+            font-size: 2.9rem;
+            line-height: 1.15;
+            margin-bottom: 0.8rem;
+        }
+        .hero h1 .brand { color: var(--red); }
+        .hero h1 .brand2 { color: var(--gold); }
+        .hero h1 .amp {
+            background: linear-gradient(135deg, #e94560 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .slogan {
+            font-family: var(--mono);
+            font-size: 1.05rem;
+            color: var(--gold);
+            margin-bottom: 1.4rem;
+            letter-spacing: 0.5px;
+        }
+        .hero .lead { color: var(--muted); font-size: 1.15rem; max-width: 680px; margin: 0 auto 1rem; }
+        .hero .lead strong { color: #fff; }
+        .hero .sub-lead { color: var(--muted); max-width: 620px; margin: 0 auto 2rem; }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 32px;
+            margin: 0 10px 10px 0;
+            background: linear-gradient(135deg, #e94560 0%, #d4af37 100%);
+            color: #0a0a1a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3); }
+        .btn-outline { background: transparent; border: 2px solid #e94560; color: #e94560; }
+        .btn-outline:hover { background: rgba(233, 69, 96, 0.08); }
+
+        section { padding: 80px 0; }
+        section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        section h2 .accent { color: var(--red); }
+        .alt { background: var(--bg-2); }
+
+        .about-studio { max-width: 760px; margin: 0 auto; text-align: center; }
+        .about-studio p { color: var(--muted); font-size: 1.08rem; line-height: 1.85; margin-bottom: 1.2rem; }
+        .about-studio strong { color: var(--gold); }
+        .tandem-boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 760px; margin: 30px auto 0; }
+        .tandem-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+        }
+        .tandem-box h3 { font-size: 1.2rem; margin-bottom: 0.7rem; }
+        .tandem-box.human h3 { color: var(--red); }
+        .tandem-box.ai h3 { color: var(--gold); }
+        .tandem-box p { color: var(--muted); font-size: 0.98rem; line-height: 1.7; }
+
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .service-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 26px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .service-card:hover { transform: translateY(-4px); border-color: var(--red); }
+        .service-card .ico { font-size: 1.6rem; margin-bottom: 0.7rem; }
+        .service-card h3 { font-size: 1.15rem; margin-bottom: 0.6rem; color: #fff; }
+        .service-card p { color: var(--muted); font-size: 0.98rem; line-height: 1.6; }
+
+        .stack-cats { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .stack-cat {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .stack-cat h3 { color: var(--gold); font-family: var(--mono); font-size: 1.05rem; margin-bottom: 14px; }
+        .stack-cat h3::before { content: '▸ '; }
+        .badges { display: flex; flex-wrap: wrap; gap: 8px; }
+        .badge {
+            font-size: 0.85rem;
+            padding: 5px 12px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: var(--bg-2);
+            color: #c8d3f5;
+            font-family: var(--mono);
+        }
+        .badge.hot { border-color: rgba(233, 69, 96, 0.6); color: var(--red); }
+        .badge.gold { border-color: rgba(212, 175, 55, 0.6); color: var(--gold); }
+
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .project-card:hover { transform: translateY(-5px); border-color: var(--gold); }
+        .project-card h3 { font-size: 1.4rem; margin-bottom: 0.8rem; color: #fff; }
+        .project-card .stack { font-family: var(--mono); font-size: 0.8rem; color: var(--red); margin-bottom: 1rem; }
+        .project-card p { color: var(--muted); margin-bottom: 1.5rem; flex-grow: 1; }
+        .project-card a { color: var(--gold); text-decoration: none; font-weight: 600; }
+        .project-card a:hover { text-decoration: underline; }
+
+        .process { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+        .step {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .step .n {
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 1.1rem;
+            margin-bottom: 14px;
+            background: linear-gradient(135deg, #e94560, #d4af37);
+            color: #0a0a1a;
+        }
+        .step h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: #fff; }
+        .step p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+
+        .contact { text-align: center; }
+        .contact-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 2rem; }
+        .contact-links a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.05rem;
+            padding: 10px 22px;
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .contact-links a:hover { background: rgba(212, 175, 55, 0.1); }
+        .contact-cta { font-family: var(--mono); color: var(--muted); margin-top: 1.5rem; }
+
+        footer { text-align: center; padding: 30px 0; color: #555a75; border-top: 1px solid var(--border); }
+        footer a { color: #7b82a0; text-decoration: none; }
+        footer a:hover { color: var(--gold); }
+
+        @media (max-width: 768px) {
+            .hero { min-height: auto; padding: 80px 0 60px; }
+            .hero h1 { font-size: 2rem; }
+            .tandem-boxes { grid-template-columns: 1fr; }
+            section h2 { font-size: 1.8rem; }
+            .btn { display: block; margin: 10px auto; max-width: 260px; }
+            nav ul { gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="studio.html" class="active">Студия</a></li>
+                <li><a href="about.html">О разработчике</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container hero-inner">
+            <div class="tandem-wrap">
+                <svg class="tandem" viewBox="0 0 220 160" aria-hidden="true">
+                    <defs>
+                        <mask id="bc-cut">
+                            <rect x="0" y="0" width="220" height="160" fill="#ffffff"/>
+                            <circle cx="118" cy="80" r="62" fill="#000000"/>
+                        </mask>
+                    </defs>
+                    <circle cx="150" cy="80" r="70" fill="#d4af37" mask="url(#bc-cut)"/>
+                    <g stroke="#e94560" stroke-width="2" opacity="0.9">
+                        <line x1="30" y1="50" x2="70" y2="30"/>
+                        <line x1="70" y1="30" x2="105" y2="55"/>
+                        <line x1="30" y1="50" x2="55" y2="85"/>
+                        <line x1="55" y1="85" x2="105" y2="55"/>
+                        <line x1="55" y1="85" x2="40" y2="120"/>
+                        <line x1="40" y1="120" x2="85" y2="125"/>
+                        <line x1="85" y1="125" x2="105" y2="90"/>
+                        <line x1="105" y1="55" x2="105" y2="90"/>
+                    </g>
+                    <g fill="#e94560">
+                        <circle cx="30" cy="50" r="6"/><circle cx="70" cy="30" r="7"/>
+                        <circle cx="105" cy="55" r="6"/><circle cx="55" cy="85" r="8"/>
+                        <circle cx="40" cy="120" r="6"/><circle cx="85" cy="125" r="7"/>
+                        <circle cx="105" cy="90" r="6"/>
+                    </g>
+                </svg>
+            </div>
+            <a class="ja-badge" href="studio.html" title="Студия Jasta & Александра">
+                <span class="ja-mark">J&amp;A</span><span class="ja-label">студия Jasta &amp; Александра</span>
+            </a>
+            <h1><span class="brand">Jasta</span> <span class="amp">&amp;</span> <span class="brand2">Александр</span></h1>
+            <p class="slogan">Человек и ИИ — одна команда</p>
+            <p class="lead">
+                Студия веб-разработки, где <strong>человек проектирует и решает</strong>,
+                а <strong>ИИ ускоряет и автоматизирует</strong>.
+            </p>
+            <p class="sub-lead">
+                Сайты, веб-сервисы, AI-ассистенты и автоматизация под ключ — быстро, понятно, с результатом.
+            </p>
+            <a href="contacts.html" class="btn">Обсудить задачу</a>
+            <a href="#services" class="btn btn-outline">Что мы делаем</a>
+            <a href="blog-jasta-aleksandr.html" class="btn btn-outline" style="border-color:var(--gold); color:var(--gold);">История студии →</a>
+        </div>
+    </header>
+
+    <section class="alt" id="about">
+        <div class="container">
+            <h2>Кто мы — <span class="accent">студия J&amp;A</span></h2>
+            <div class="about-studio">
+                <p>
+                    <strong>Jasta &amp; Александр</strong> — это тандем, который встречается нечасто:
+                    инженер с руками, головой и опытом, и его AI-напарница, которая ускоряет каждый шаг.
+                </p>
+                <p>
+                    Мы не «компания с менеджерами и сроками на бумаге». Мы — <strong>двое в одной команде</strong>:
+                    Александр отвечает за архитектуру, код и решения, Jasta — за скорость, детали и автоматизацию.
+                </p>
+                <p>
+                    Так мы делаем то, что обычной команде из нескольких человек требуется неделями, —
+                    за дни, с тем же качеством и полной ответственностью.
+                </p>
+            </div>
+            <div class="tandem-boxes">
+                <div class="tandem-box human">
+                    <h3>Человек — решает</h3>
+                    <p>Проектирует систему, принимает решения, отвечает за результат. Понимает, что нужно вашему бизнесу, и доводит до работающего продукта.</p>
+                </div>
+                <div class="tandem-box ai">
+                    <h3>ИИ — ускоряет</h3>
+                    <p>Пишет код, разбирает документы, генерирует контент, тестирует. Берёт рутину на себя, чтобы человек думал о главном — о вашей задаче.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Что <span class="accent">мы делаем</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="ico">🌐</div>
+                    <h3>Сайты и лендинги</h3>
+                    <p>От визитки до каталога: быстрые, удобные, с SEO. Которые работают и приносят клиентов.</p>
+                </div>
+                <div class="service-card">
+                    <div class="ico">⚙️</div>
+                    <h3>Веб-сервисы и кабинеты</h3>
+                    <p>Личные кабинеты, дашборды, учёт — на FastAPI и React. С базами данных и админкой.</p>
+                </div>
+                <div class="service-card">
+                    <div class="ico">🤖</div>
+                    <h3>AI-ассистенты и чат-боты</h3>
+                    <p>Умные помощники, которые отвечают клиентам, обрабатывают заявки и снимают рутину с сотрудников.</p>
+                </div>
+                <div class="service-card">
+                    <div class="ico">🧠</div>
+                    <h3>Автоматизация на Python</h3>
+                    <p>Программы, которые делают повторяющуюся работу сами: документы, отчёты, рассылки, уведомления.</p>
+                </div>
+                <div class="service-card">
+                    <div class="ico">🖥️</div>
+                    <h3>Десктопные приложения</h3>
+                    <p>Программы для Windows, работающие локально: с файлами, без зависимости от интернета.</p>
+                </div>
+                <div class="service-card">
+                    <div class="ico">📄</div>
+                    <h3>Интеграция нейросетей</h3>
+                    <p>Распознавание документов, генерация текстов, анализ данных — туда, где ИИ реально экономит время.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="alt" id="stack">
+        <div class="container">
+            <h2>Наш <span class="accent">стек</span></h2>
+            <div class="stack-cats">
+                <div class="stack-cat">
+                    <h3>backend</h3>
+                    <div class="badges">
+                        <span class="badge hot">Python</span>
+                        <span class="badge hot">FastAPI</span>
+                        <span class="badge">Flask</span>
+                        <span class="badge">SQLAlchemy</span>
+                        <span class="badge">Pydantic</span>
+                        <span class="badge">REST API</span>
+                        <span class="badge">SQLite</span>
+                        <span class="badge">PostgreSQL</span>
+                        <span class="badge">Docker</span>
+                    </div>
+                </div>
+                <div class="stack-cat">
+                    <h3>frontend</h3>
+                    <div class="badges">
+                        <span class="badge hot">React</span>
+                        <span class="badge hot">TypeScript</span>
+                        <span class="badge">JavaScript</span>
+                        <span class="badge">Vite</span>
+                        <span class="badge">HTML5 / CSS3</span>
+                        <span class="badge">Alpine.js</span>
+                        <span class="badge">HTMX</span>
+                    </div>
+                </div>
+                <div class="stack-cat">
+                    <h3>ai & llm</h3>
+                    <div class="badges">
+                        <span class="badge gold">AI-агенты</span>
+                        <span class="badge gold">Промпт-инжиниринг</span>
+                        <span class="badge">GigaChat</span>
+                        <span class="badge">OpenAI</span>
+                        <span class="badge">DeepSeek</span>
+                        <span class="badge">Ollama</span>
+                        <span class="badge">OCR</span>
+                        <span class="badge">Генерация изображений</span>
+                    </div>
+                </div>
+                <div class="stack-cat">
+                    <h3>devops & tools</h3>
+                    <div class="badges">
+                        <span class="badge">Git / GitHub</span>
+                        <span class="badge">GitHub Pages</span>
+                        <span class="badge">Linux / SSH</span>
+                        <span class="badge">PyInstaller</span>
+                        <span class="badge">uv</span>
+                        <span class="badge">OpenCode</span>
+                        <span class="badge">SEO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process">
+        <div class="container">
+            <h2>Как мы <span class="accent">работаем</span></h2>
+            <div class="process">
+                <div class="step">
+                    <div class="n">1</div>
+                    <h3>Задача</h3>
+                    <p>Слушаем вас, разбираем процесс и находим, что реально ускорить.</p>
+                </div>
+                <div class="step">
+                    <div class="n">2</div>
+                    <h3>Решение</h3>
+                    <p>Человек проектирует, ИИ генерирует. Быстро показываем живой результат, а не «презентацию».</p>
+                </div>
+                <div class="step">
+                    <div class="n">3</div>
+                    <h3>Продукт</h3>
+                    <p>Доводим до рабочего состояния, тестируем на ваших реальных данных.</p>
+                </div>
+                <div class="step">
+                    <div class="n">4</div>
+                    <h3>Поддержка</h3>
+                    <p>Не бросаем после сдачи: донастраиваем и развиваем вместе с вами.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="alt" id="projects">
+        <div class="container">
+            <h2>Наши <span class="accent">продукты</span></h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Jastas</h3>
+                    <div class="stack">FastAPI · React · AI</div>
+                    <p>Персональный AI-ассистент и экосистема автоматизации: задачи, агенты, защищённое хранилище ключей, мониторинг.</p>
+                    <a href="https://github.com/jektor27" target="_blank" rel="nofollow noopener">GitHub →</a>
+                </div>
+                <div class="project-card">
+                    <h3>ФлаерГусев</h3>
+                    <div class="stack">HTML · JS · SEO</div>
+                    <p>Локальный каталог бизнеса Гусева: 52 магазина, 12 категорий, топ-1–2 в Яндексе по ключевым запросам.</p>
+                    <a href="https://gusev-flyer.ru" target="_blank" rel="nofollow noopener">gusev-flyer.ru →</a>
+                </div>
+                <div class="project-card">
+                    <h3>УМНЫЙ ЭДО</h3>
+                    <div class="stack">Python · PyInstaller · OCR</div>
+                    <p>Программа, которая превращает PDF в Excel по вашим шаблонам — за секунды, без ручного набора.</p>
+                    <a href="https://pryazhnikov-ai.ru" target="_blank" rel="nofollow noopener">Подробнее →</a>
+                </div>
+                <div class="project-card">
+                    <h3>Jektor Browser</h3>
+                    <div class="stack">Оптимизация · AI-ready</div>
+                    <p>Лёгкий и быстрый браузер, оптимизированный для работы с AI-сервисами. Память −6×.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Обсудить <span class="accent">задачу</span></h2>
+            <p style="color: var(--muted); font-size: 1.1rem;">Расскажите, что нужно — предложим решение.</p>
+            <div class="contact-links">
+                <a href="https://vk.com/pryazhnikov2008" target="_blank" rel="nofollow noopener">VK</a>
+                <a href="https://ok.ru/aleksandr.pryazhnikov" target="_blank" rel="nofollow noopener">Одноклассники</a>
+                <a href="mailto:pryazhnikov24@yandex.ru">Email</a>
+            </div>
+            <p class="contact-cta">print("Человек и ИИ — одна команда")</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div style="margin-bottom:14px;">
+                <a class="ja-badge" href="https://pryazhnikov-ai.ru" target="_blank" rel="noopener" title="Студия Jasta & Александра">
+                    <span class="ja-mark">J&amp;A</span><span class="ja-label">студия Jasta &amp; Александра</span>
+                </a>
+            </div>
+            <p>© 2026 Студия <a href="studio.html">Jasta &amp; Александр</a> · <a href="https://pryazhnikov-ai.ru">pryazhnikov-ai.ru</a> · Человек и ИИ — одна команда</p>
+        </div>
+    </footer>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111176884', 'ym');
+        ym(111176884, 'init', {clickmap:true, trackLinks:true, accurateTrackBounce:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/111176884" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

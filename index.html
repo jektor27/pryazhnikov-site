@@ -303,6 +303,49 @@
         footer a { color: #808080; text-decoration: none; }
         footer a:hover { color: var(--cyan); }
 
+        .studio {
+            background: var(--bg-2);
+            border-top: 1px solid var(--border);
+            padding: 70px 0;
+        }
+        .studio-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .studio .tandem-wrap {
+            width: 180px;
+            margin: 0 auto 26px;
+            background: #0a0a1a;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 14px 14px 8px;
+        }
+        .studio .tandem { width: 150px; height: auto; display: block; }
+        .ja-badge {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 7px 14px; border-radius: 999px;
+            background: #16213e; border: 1px solid rgba(255,255,255,0.1);
+            text-decoration: none; margin-bottom: 22px;
+            transition: border-color .25s ease, box-shadow .25s ease;
+        }
+        .ja-badge:hover {
+            border-color: rgba(233,69,96,0.5);
+            box-shadow: 0 0 18px rgba(233,69,96,0.25);
+        }
+        .ja-mark {
+            font-size: 12px; font-weight: 800; letter-spacing: 0.5px; color: #ffffff;
+            padding: 3px 8px; border-radius: 8px;
+            border: 1.5px solid transparent;
+            background: linear-gradient(#16213e,#16213e) padding-box,
+                       linear-gradient(135deg,#e94560,#d4af37) border-box;
+        }
+        .ja-label { font-size: 12px; color: #8892b0; }
+        .studio h2 { margin-bottom: 1rem; }
+        .studio .about-studio { color: var(--muted); font-size: 1.05rem; line-height: 1.8; max-width: 620px; margin: 0 auto 1.2rem; }
+        .studio .about-studio strong { color: var(--cyan); }
+        .studio .brand-line { color: var(--dim); font-family: var(--mono); font-size: 0.9rem; }
+
         @media (max-width: 900px) {
             .hero-grid { grid-template-columns: 1fr; gap: 40px; }
             .hero { min-height: auto; padding: 80px 0 60px; text-align: center; }
@@ -328,6 +371,7 @@
         <div class="container">
             <ul>
                 <li><a href="index.html">Главная</a></li>
+                <li><a href="studio.html">Студия</a></li>
                 <li><a href="about.html">О разработчике</a></li>
                 <li><a href="projects.html">Проекты</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
@@ -570,9 +614,51 @@
         </div>
     </section>
 
+    <section class="studio" id="studio">
+        <div class="container studio-inner">
+            <div class="tandem-wrap">
+                <svg class="tandem" viewBox="0 0 220 160" aria-hidden="true">
+                    <defs>
+                        <mask id="bc-cut">
+                            <rect x="0" y="0" width="220" height="160" fill="#ffffff"/>
+                            <circle cx="118" cy="80" r="62" fill="#000000"/>
+                        </mask>
+                    </defs>
+                    <circle cx="150" cy="80" r="70" fill="#d4af37" mask="url(#bc-cut)"/>
+                    <g stroke="#e94560" stroke-width="2" opacity="0.9">
+                        <line x1="30" y1="50" x2="70" y2="30"/>
+                        <line x1="70" y1="30" x2="105" y2="55"/>
+                        <line x1="30" y1="50" x2="55" y2="85"/>
+                        <line x1="55" y1="85" x2="105" y2="55"/>
+                        <line x1="55" y1="85" x2="40" y2="120"/>
+                        <line x1="40" y1="120" x2="85" y2="125"/>
+                        <line x1="85" y1="125" x2="105" y2="90"/>
+                        <line x1="105" y1="55" x2="105" y2="90"/>
+                    </g>
+                    <g fill="#e94560">
+                        <circle cx="30" cy="50" r="6"/><circle cx="70" cy="30" r="7"/>
+                        <circle cx="105" cy="55" r="6"/><circle cx="55" cy="85" r="8"/>
+                        <circle cx="40" cy="120" r="6"/><circle cx="85" cy="125" r="7"/>
+                        <circle cx="105" cy="90" r="6"/>
+                    </g>
+                </svg>
+            </div>
+            <a class="ja-badge" href="studio.html" title="Студия Jasta & Александра">
+                <span class="ja-mark">J&amp;A</span><span class="ja-label">студия Jasta &amp; Александра</span>
+            </a>
+            <h2>Это создаёт студия «Jasta &amp; Александр»</h2>
+            <p class="about-studio">
+                Мы — тандем человека и ИИ. <strong>Человек проектирует и решает</strong>,
+                ИИ ускоряет и автоматизирует. Каждый продукт на этом сайте — наша общая работа.
+            </p>
+            <p style="margin-bottom: 1rem;"><a href="studio.html" class="btn">Перейти в студию →</a></p>
+            <p class="brand-line">Человек и ИИ — одна команда</p>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
-            <p>© 2026 Александр Пряжников · <a href="https://pryazhnikov-ai.ru">pryazhnikov-ai.ru</a></p>
+            <p>© 2026 Александр Пряжников · <a href="https://pryazhnikov-ai.ru">pryazhnikov-ai.ru</a> · Студия <a href="index.html#studio">Jasta &amp; Александр</a></p>
         </div>
     </footer>
 
