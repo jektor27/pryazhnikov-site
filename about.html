@@ -9,6 +9,11 @@
     <link rel="canonical" href="https://pryazhnikov-ai.ru/about.html">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta property="og:title" content="Биография — Пряжников Александр Иванович">
+    <meta property="og:description" content="Путь в разработку: от HTML/PHP до Python, FastAPI, React и AI. Проекты Jastas, Jektor, ФлаерГусев.">
+    <meta property="og:url" content="https://pryazhnikov-ai.ru/about.html">
+    <meta property="og:image" content="https://pryazhnikov-ai.ru/photo.jpg">
+    <meta property="og:locale" content="ru_RU">
     <script>
     if (location.hostname !== 'pryazhnikov-ai.ru') {
       location.replace('https://pryazhnikov-ai.ru' + location.pathname + location.search + location.hash);
@@ -40,125 +45,7 @@
       }
     }
     </script>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg: #0a0e27;
-            --bg-2: #0f1430;
-            --card: #1a1f3a;
-            --border: #2a2f4a;
-            --text: #e0e0e0;
-            --muted: #a0a0a0;
-            --dim: #808080;
-            --cyan: #00ffff;
-            --pink: #ff00ff;
-            --mono: 'Cascadia Code', 'Consolas', 'JetBrains Mono', monospace;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        nav {
-            background: var(--bg-2);
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border);
-        }
-        nav ul { display: flex; justify-content: center; gap: 30px; list-style: none; flex-wrap: wrap; }
-        nav a { color: var(--cyan); text-decoration: none; font-weight: 600; }
-        nav a:hover { text-decoration: underline; }
-        .page-header {
-            padding: 60px 0 30px;
-            text-align: center;
-            background: linear-gradient(135deg, var(--bg) 0%, #1a1f3a 100%);
-        }
-        .page-header h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--pink) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .page-header .subtitle { color: var(--muted); font-size: 1.2rem; margin-top: 0.5rem; }
-        .page-header .tag {
-            display: inline-block;
-            font-family: var(--mono);
-            font-size: 0.85rem;
-            color: var(--green, #3ddc97);
-            border: 1px solid rgba(61, 220, 151, 0.4);
-            padding: 5px 12px;
-            border-radius: 20px;
-            margin-top: 1rem;
-            background: rgba(61, 220, 151, 0.08);
-        }
-        section { padding: 60px 0; }
-        section h2 { font-size: 2rem; margin-bottom: 2rem; color: var(--cyan); }
-        section:nth-of-type(even) { background: var(--bg-2); }
-        .bio-photo {
-            float: left;
-            width: 260px;
-            height: 260px;
-            object-fit: cover;
-            border-radius: 20px;
-            border: 3px solid var(--cyan);
-            margin: 0 30px 20px 0;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
-        }
-        .bio-text { font-size: 1.05rem; color: #c0c0c0; }
-        .bio-text p { margin-bottom: 1.2rem; }
-        .bio-text strong { color: var(--cyan); }
-        .project-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 20px;
-        }
-        .project-card h3 { color: var(--cyan); font-size: 1.3rem; margin-bottom: 0.8rem; }
-        .project-card .stack { font-family: var(--mono); font-size: 0.8rem; color: var(--pink); margin-bottom: 0.6rem; }
-        .project-card p { color: var(--muted); margin-bottom: 0.8rem; }
-        .project-card a { color: var(--cyan); text-decoration: none; font-weight: 600; }
-        .project-card a:hover { text-decoration: underline; }
-        ul.achievements { list-style: none; }
-        ul.achievements li {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-            color: #c0c0c0;
-        }
-        ul.achievements li::before { content: '✓ '; color: var(--cyan); font-weight: 700; }
-        ul.timeline { list-style: none; }
-        ul.timeline li {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-            color: #c0c0c0;
-        }
-        ul.timeline li::before { content: '▸ '; color: var(--pink); font-weight: 700; }
-        .values { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-        .value-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-        }
-        .value-card h3 { color: var(--cyan); font-size: 1.1rem; margin-bottom: 0.6rem; }
-        .value-card p { color: var(--muted); font-size: 0.95rem; }
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            color: #606060;
-            border-top: 1px solid var(--border);
-        }
-        footer a { color: #808080; text-decoration: none; }
-        footer a:hover { color: var(--cyan); }
-        @media (max-width: 768px) {
-            .page-header h1 { font-size: 1.8rem; }
-            section h2 { font-size: 1.6rem; }
-            .bio-photo { float: none; display: block; margin: 0 auto 20px; width: 220px; height: 220px; }
-            nav ul { gap: 15px; }
-        }
-    </style>
+        <link rel="stylesheet" href="styles.css">
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
