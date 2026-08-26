@@ -3,235 +3,445 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JCode — свой Codex | Пряжников Александр</title>
-    <meta name="description" content="JCode — десктопный ИИ-ассистент для кодирования. Python, PyInstaller, SQLite, Playwright. Свой Codex без подписок.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pryazhnikov-ai.ru/jcode.html">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <meta property="og:title" content="JCode — свой Codex | Пряжников Александр">
-    <meta property="og:description" content="Десктопный ИИ-ассистент для кодирования. Python, PyInstaller, SQLite, Playwright.">
-    <meta property="og:url" content="https://pryazhnikov-ai.ru/jcode.html">
-    <meta property="og:image" content="https://pryazhnikov-ai.ru/photo.jpg">
-    <meta property="og:locale" content="ru_RU">
-    <script>
-    if (location.hostname !== 'pryazhnikov-ai.ru') {
-      location.replace('https://pryazhnikov-ai.ru' + location.pathname + location.search + location.hash);
-    }
-    </script>
-        <link rel="stylesheet" href="styles.css?v=2">
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-      m[i].l=1*new Date();for (var j = 0; j < document.scripts.length; j++){if (document.scripts[j].src === r){ return; }}
-      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-      (window, document,"script","https://mc.yandex.ru/metrika/tag.js?id=111813753", "ym");
-      ym(111813753, "init", {
-        ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer",
-        referrer: document.referrer, url: location.href,
-        accurateTrackBounce:true, trackLinks:true
-      });
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/111813753" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
+    <title>JCode — Интеллектуальная IDE | pryazhnikov-ai.ru</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a1a;
+            color: #e0e0e0;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e94560;
+        }
+
+        .back-link {
+            color: #e94560;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            color: #d4af37;
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            color: #e94560;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+        }
+
+        .tagline {
+            color: #d4af37;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: #16213e;
+            border: 1px solid #e94560;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #16213e 0%, #0a0a1a 100%);
+            border: 1px solid #e94560;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 32px rgba(233, 69, 96, 0.2);
+        }
+
+        .download-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background: linear-gradient(135deg, #e94560, #d4af37);
+            color: #0a0a1a;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 16px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(233, 69, 96, 0.6);
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            color: #e94560;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #16213e;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: #16213e;
+            border: 1px solid #0f3460;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #e94560;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(233, 69, 96, 0.3);
+        }
+
+        .feature-number {
+            display: inline-block;
+            background: #e94560;
+            color: #0a0a1a;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .feature-title {
+            color: #d4af37;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-description {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+        }
+
+        .screenshot {
+            background: #16213e;
+            border: 2px dashed #0f3460;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        .screenshot img {
+            max-width: 100%;
+            border-radius: 8px;
+            border: 1px solid #0f3460;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: #0f3460;
+            color: #e0e0e0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid #e94560;
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid #16213e;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .highlight {
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="studio.html">Студия</a></li>
-                <li><a href="about.html">О разработчике</a></li>
-                <li><a href="projects.html">Проекты</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <div class="container">
+    <div class="container">
+        <header>
+            <a href="/" class="back-link">← На главную</a>
             <h1>JCode</h1>
-            <p class="tagline">Свой Codex. Бесплатно. Локально. Без подписок.</p>
-            <span class="version">v1.4 — Июль 2026</span>
-        </div>
-    </section>
+            <p class="tagline">Интеллектуальная среда разработки нового поколения</p>
+            <div class="version-badge">
+                ⚡ Версия 0.3.3 | ✅ 56 тестов PASS | 10 фич | 3 баг-фикса
+            </div>
+        </header>
 
-    <section>
-        <div class="container content">
-            <h2>Что такое JCode?</h2>
-            <p>
-                <strong>JCode</strong> — это десктопный ИИ-ассистент для кодирования, который работает
-                <strong>на твоём компьютере</strong>. Никаких облаков, никаких подписок, никаких ограничений.
-                Ты контролируешь всё: модель, ключи, файлы.
+        <div class="hero">
+            <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+                <span class="highlight">JCode</span> — это не просто редактор кода. 
+                Это специализированная AI-IDE, глубоко интегрированная в экосистему <span class="highlight">Jastas</span>. 
+                Созданная для скорости, приватности и бесшовной работы с искусственным интеллектом.
             </p>
-            <p>
-                Вдохновлён <strong>Codex App</strong> от OpenAI и <strong>OpenCode</strong>, но с важным отличием:
-                JCode — <strong>твой</strong>. Бесплатный, локальный, с поддержкой любых LLM-провайдеров.
-            </p>
-
-            <div class="tech-stack">
-                <span class="tech-badge hot">Python</span>
-                <span class="tech-badge hot">FastAPI</span>
-                <span class="tech-badge">SQLite</span>
-                <span class="tech-badge">PyInstaller</span>
-                <span class="tech-badge">WebView2</span>
-                <span class="tech-badge">Playwright</span>
-                <span class="tech-badge">Git</span>
-                <span class="tech-badge">ripgrep</span>
+            
+            <div class="download-section">
+                <a href="#" class="btn-download" onclick="alert('Скачивание JCode v0.3.3...'); return false;">
+                    ⬇ Скачать JCode v0.3.3 (Windows)
+                </a>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">
+                    Размер: ~260 MB | Python 3.11+ | Windows 10/11 | Playwright включён
+                </p>
             </div>
         </div>
-    </section>
 
-    <section class="alt">
-        <div class="container">
-            <h2>Возможности</h2>
+        <div class="section">
+            <h2>🎨 Интерфейс и комфорт</h2>
             <div class="feature-grid">
-                <div class="feature">
-                    <div class="ico">💬</div>
-                    <h3>Чат с ИИ</h3>
-                    <p>Мгновенные ответы через SSE. Поддержка markdown и кода. История всех диалогов.</p>
+                <div class="feature-card">
+                    <div class="feature-title">
+                        <span class="feature-number">1</span>
+                        Статус-бар
+                    </div>
+                    <p class="feature-description">
+                        Вся важная информация всегда под рукой: версия, провайдер, режим, сессия, часы. 
+                        Закреплён внизу окна для постоянного контроля состояния системы.
+                    </p>
                 </div>
-                <div class="feature">
-                    <div class="ico">📝</div>
-                    <h3>Patch / Diff</h3>
-                    <p>ИИ создаёт патчи для файлов. Визуальный diff: было/стало. Один клик — откат.</p>
+
+                <div class="feature-card">
+                    <div class="feature-title">
+                        <span class="feature-number">2</span>
+                        Тёмная/светлая тема
+                    </div>
+                    <p class="feature-description">
+                        Мгновенное переключение между темами (кнопка 🌙/☀️ в хедере) с автоматическим 
+                        сохранением предпочтений в localStorage.
+                    </p>
                 </div>
-                <div class="feature">
-                    <div class="ico">📦</div>
-                    <h3>Git + Ripgrep</h3>
-                    <p>Коммиты, статус, ветки. Быстрый поиск по коду через ripgrep.</p>
-                </div>
-                <div class="feature">
-                    <div class="ico">🌐</div>
-                    <h3>Браузер (Playwright)</h3>
-                    <p>Скриншоты, клики, выполнение JS. Автоматизация веб-задач.</p>
-                </div>
-                <div class="feature">
-                    <div class="ico">🔐</div>
-                    <h3>Песочница</h3>
-                    <p>Ограниченная папка для работы. Опасные команды требуют подтверждения.</p>
-                </div>
-                <div class="feature">
-                    <div class="ico">📦</div>
-                    <h3>Сборка в exe</h3>
-                    <p>Один файл 76 МБ. Работает на любом ПК Windows без установки Python.</p>
+
+                <div class="feature-card">
+                    <div class="feature-title">
+                        <span class="feature-number">3</span>
+                        Экспорт чата
+                    </div>
+                    <p class="feature-description">
+                        Сохраняйте важные решения и код в форматах <span class="highlight">📥 Markdown (.md)</span> 
+                        или <span class="highlight"> Text (.txt)</span> прямо из футера левой панели.
+                    </p>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section>
-        <div class="container">
-            <h2>Провайдеры <span class="accent">(кто даёт мозг)</span></h2>
-            <div class="content">
-                <p>JCode работает с <strong>любой</strong> LLM-моделью. Выбери, что подходит:</p>
-                <div class="feature-grid">
-                    <div class="feature">
-                        <h3>OpenCode Zen</h3>
-                        <p>Облако (РФ). Модель hy3-free. Работает бесплатно.</p>
+        <div class="section">
+            <h2>⚡ Скорость и управление</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-title">
+                        <span class="feature-number">4</span>
+                        Горячие клавиши
                     </div>
-                    <div class="feature">
-                        <h3>GigaChat</h3>
-                        <p>Облако (РФ). GigaChat-Max. Нужен ключ Сбера.</p>
+                    <p class="feature-description">
+                        <span class="highlight">Ctrl+N</span> — новая сессия<br>
+                        <span class="highlight">Ctrl+R</span> — retry последнего запроса<br>
+                        <span class="highlight">Esc</span> — экстренная остановка генерации
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">
+                        <span class="feature-number">5</span>
+                        История команд
                     </div>
-                    <div class="feature">
-                        <h3>Ollama</h3>
-                        <p>Локально. Qwen, Llama, Mistral. Полная приватность.</p>
+                    <p class="feature-description">
+                        Навигация по предыдущим запросам с помощью клавиш <span class="highlight">↑/↓</span>. 
+                        Сохраняется локально, чтобы не терять контекст работы.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-title">
+                        <span class="feature-number">6</span>
+                        Drag-and-Drop
                     </div>
-                    <div class="feature">
-                        <h3>DeepSeek</h3>
-                        <p>Облако. Мощные модели. Баланс цена/качество.</p>
-                    </div>
+                    <p class="feature-description">
+                        Просто перетащите любой файл из проводника прямо в окно чата — 
+                        JCode мгновенно проанализирует содержимое и подключит к контексту.
+                    </p>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="alt">
-        <div class="container">
-            <h2>Дорожная карта</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-num">v1.0</div>
-                    <div class="timeline-body">
-                        <h3>Скелет и провайдеры</h3>
-                        <p class="done">✅ Flask + webview, chat/complete, SQLite, 3 провайдера, confirm-диалоги</p>
+        <div class="section">
+            <h2>🧠 Работа с кодом и AI</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-title">
+                        <span class="feature-number">7</span>
+                        Подсветка синтаксиса в Diff
                     </div>
+                    <p class="feature-description">
+                        При просмотре изменений система чётко выделяет ключевые слова, строки, 
+                        комментарии и числа, делая ревью кода мгновенным и безопасным.
+                    </p>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-num">v1.1</div>
-                    <div class="timeline-body">
-                        <h3>История и переключение</h3>
-                        <p class="done">✅ SQLite-история, переключение провайдеров, оптимизация</p>
+
+                <div class="feature-card">
+                    <div class="feature-title">
+                        <span class="feature-number">8</span>
+                        Кнопка Stop ⏹
                     </div>
+                    <p class="feature-description">
+                        Немедленно останавливает поток токенов через API, экономя ресурсы 
+                        и время при неверных запросах.
+                    </p>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-num">v1.2</div>
-                    <div class="timeline-body">
-                        <h3>Инструменты: Patch + Git</h3>
-                        <p class="done">✅ Patch-инструмент, diff-вью, git status/commit, ripgrep поиск</p>
+
+                <div class="feature-card">
+                    <div class="feature-title">
+                        <span class="feature-number">9</span>
+                        Кнопка Retry 🔄
                     </div>
+                    <p class="feature-description">
+                        Повторяет последний запрос с теми же параметрами, если результат 
+                        не устроил с первого раза.
+                    </p>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-num">v1.3</div>
-                    <div class="timeline-body">
-                        <h3>Браузер + SSE</h3>
-                        <p class="done">✅ Per-client SSE, playwright: open/screenshot/click/evaluate</p>
+
+                <div class="feature-card">
+                    <div class="feature-title">
+                        <span class="feature-number">10</span>
+                        Мультиязычность
                     </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-num">v1.4</div>
-                    <div class="timeline-body">
-                        <h3>UI + Сборка exe</h3>
-                        <p class="done">✅ Скриншоты, approve-карточки, сборка с playwright (76 МБ), 54 теста</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-num">v2.0</div>
-                    <div class="timeline-body">
-                        <h3>Командный центр</h3>
-                        <p class="pending">⬜ Трёхпанельный UI (проекты / агент / результат)</p>
-                        <p class="pending">⬜ Параллельные агенты</p>
-                        <p class="pending">⬜ Git worktrees</p>
-                        <p class="pending">⬜ Skills (переиспользуемые блоки)</p>
-                        <p class="pending">⬜ Встроенный терминал</p>
-                    </div>
+                    <p class="feature-description">
+                        Система автоматически определяет язык контента и подстраивает интерфейс 
+                        для максимального удобства работы.
+                    </p>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section>
-        <div class="container">
-            <h2>Почему JCode, а не Codex / OpenCode?</h2>
-            <div class="content">
-                <ul>
-                    <li><strong>Бесплатно</strong> — никаких подписок ($20/мес у Codex)</li>
-                    <li><strong>Локально</strong> — код не покидает твой ПК</li>
-                    <li><strong>Любая модель</strong> — Zen, GigaChat, Ollama, DeepSeek</li>
-                    <li><strong>Своё</strong> — подстраивается под тебя</li>
-                    <li><strong>Безопасно</strong> — песочница, подтверждения, ключи в %APPDATA%</li>
-                    <li><strong>Автономно</strong> — работает без интернета (Ollama)</li>
+        <div class="section">
+            <h2>🔧 Экосистемная интеграция</h2>
+            <div class="hero" style="margin-top: 2rem;">
+                <p style="margin-bottom: 1rem;">
+                    В отличие от стандартных редакторов, JCode является <span class="highlight">"мостом"</span> 
+                    к мощностям Jastas:
+                </p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin: 0.5rem 0;">✓ Прямая связь с <span class="highlight">FastAPI Backend</span> (порт 8000)</li>
+                    <li style="margin: 0.5rem 0;">✓ Готовность к управлению инструментами: очистка диска, сканирование сети</li>
+                    <li style="margin: 0.5rem 0;">✓ Работа с зашифрованным <span class="highlight">Vault</span> и данными здоровья</li>
+                    <li style="margin: 0.5rem 0;">✓ Архитектурная готовность к интеграции с браузером <span class="highlight">Jektor</span></li>
+                    <li style="margin: 0.5rem 0;">✓ Визуализация 3D-графа инфраструктуры</li>
                 </ul>
             </div>
         </div>
-    </section>
 
-    <section class="alt">
-        <div class="container cta">
-            <h2>Хочешь попробовать?</h2>
-            <p>JCode в процессе разработки. Следи за обновлениями.</p>
-            <a href="contacts.html" class="btn">Связаться</a>
-            <a href="projects.html" class="btn btn-outline">Все проекты</a>
+        <div class="section">
+            <h2>📸 Интерфейс</h2>
+            <div class="screenshot" style="border-style:solid;border-color:#0f3460;">
+                <img src="screenshots/jcode-v0.3.3.png" alt="JCode v0.3.3 Interface" style="max-width:100%;border-radius:8px;">
+            </div>
         </div>
-    </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Александр Пряжников &middot; <a href="https://pryazhnikov-ai.ru">pryazhnikov-ai.ru</a> &middot; Студия <a href="studio.html">Jasta &amp; Александр</a></p>
+        <div class="section">
+            <h2>🛡️ Надёжность</h2>
+            <div class="hero" style="border-color: #d4af37;">
+                <p>
+                    Проект покрыт автотестами — <span class="highlight">56 успешных тестов</span>, 
+                    гарантирующих стабильность работы каждой новой функции перед релизом. 
+                    JCode — это инструмент, которому можно доверять критические задачи.
+                </p>
+                <div class="tech-stack" style="margin-top: 1rem;">
+                    <span class="tech-tag">Python 3.14</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">Playwright</span>
+                    <span class="tech-tag">SQLite</span>
+                    <span class="tech-tag">SSE</span>
+                    <span class="tech-tag">PyInstaller</span>
+                    <span class="tech-tag">pytest</span>
+                </div>
+            </div>
         </div>
-    </footer>
 
+        <footer>
+            <p>© 2026 Александр Пряжников | JCode v0.3.3</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="/" style="color: #e94560; text-decoration: none;">← На главную</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Анимация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach(function(card, index) {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(function() {
+                    card.style.transition = 'all 0.5s';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
 </body>
 </html>
