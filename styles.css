@@ -198,6 +198,8 @@ ul.achievements li::before { content: ''; }
 .studio-inner { max-width: 720px; margin: 0 auto; text-align: center; }
 .studio .tandem-wrap { width: 200px; margin: 0 auto 26px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 14px; }
 .studio .tandem { width: 100%; height: auto; display: block; border-radius: 8px; filter: drop-shadow(0 0 20px rgba(59,130,246,0.15)); }
+.hero .tandem-wrap { width: 230px; margin: 0 auto 24px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 14px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
+.hero .tandem-wrap img { width: 100%; height: auto; display: block; border-radius: 8px; filter: drop-shadow(0 0 20px rgba(59,130,246,0.15)); }
 .studio .about-studio { color: var(--muted); font-size: 1.05rem; line-height: 1.8; max-width: 620px; margin: 0 auto 1.2rem; }
 .studio .about-studio strong { color: var(--text); }
 .studio .brand-line { color: var(--dim); font-family: var(--mono); font-size: 0.85rem; }
