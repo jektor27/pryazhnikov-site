@@ -268,7 +268,7 @@ footer a:hover { color: var(--blue); }
   .hero .subtitle { font-size: 1.05rem; }
   section h2 { font-size: 1.7rem; }
   .btn { display: block; margin: 8px auto; max-width: 260px; text-align: center; }
-  .about-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .about-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
   .stat .num { font-size: 1.3rem; }
   .stat .lbl { font-size: 0.75rem; }
   nav ul { gap: 16px; }
