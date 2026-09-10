@@ -213,6 +213,21 @@ ul.achievements li::before { content: ''; }
 .studio .brand-line { color: var(--dim); font-family: var(--mono); font-size: 0.85rem; }
 .studio h2 { margin-bottom: 1rem; }
 
+/* ========== STUDIO HERO ========== */
+.hero-inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.hero-inner h1 { text-align: center; margin-bottom: 0.5rem; }
+.hero h1 .brand { color: var(--blue); }
+.hero h1 .brand2 { color: var(--emerald); }
+.hero h1 .amp { color: var(--dim); }
+.hero .slogan { font-family: var(--mono); color: var(--blue); letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 1rem; }
+.hero-inner .lead { color: var(--muted); font-size: 1.15rem; max-width: 680px; margin: 0 auto 0.7rem; line-height: 1.65; }
+.hero-inner .lead strong { color: var(--text); }
+.hero-inner .sub-lead { color: var(--muted); max-width: 640px; margin: 0 auto 1.8rem; }
+.hero-inner .btn { margin: 6px 8px; }
+.hero-note { margin-top: 16px; color: var(--dim); font-size: 0.92rem; }
+.hero-note a { color: var(--blue); text-decoration: none; font-weight: 500; }
+.hero-note a:hover { text-decoration: underline; }
+
 /* ========== JA BADGE ========== */
 .ja-badge { display: inline-flex; align-items: center; gap: 10px; padding: 7px 14px; border-radius: 999px; background: var(--card); border: 1px solid var(--border); text-decoration: none; margin-bottom: 22px; transition: border-color 0.2s, box-shadow 0.2s; }
 .ja-badge:hover { border-color: var(--blue); box-shadow: 0 0 16px rgba(59,130,246,0.15); }
@@ -259,6 +274,47 @@ article blockquote { border-left: 3px solid var(--blue); background: var(--card)
 footer { text-align: center; padding: 32px 0; color: var(--dim); border-top: 1px solid var(--border); font-size: 0.85rem; }
 footer a { color: var(--muted); text-decoration: none; }
 footer a:hover { color: var(--blue); }
+
+/* ========== WHAT WE DO ========== */
+.mock-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.mock-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; transition: all 0.2s; }
+.mock-card:hover { transform: translateY(-3px); border-color: var(--blue); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+.mock-frame { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: #0b1120; margin-bottom: 16px; }
+.mock-bar { display: flex; gap: 5px; padding: 8px 10px; background: var(--bg-2); border-bottom: 1px solid var(--border); }
+.mock-bar span { width: 8px; height: 8px; border-radius: 50%; background: var(--border); }
+.mock-bar span:first-child { background: #ef4444; }
+.mock-bar span:nth-child(2) { background: #f59e0b; }
+.mock-bar span:nth-child(3) { background: #10b981; }
+.mock-body { padding: 14px; min-height: 130px; display: flex; flex-direction: column; gap: 8px; }
+.mock-nav { height: 10px; border-radius: 3px; background: rgba(148,163,184,0.2); margin-bottom: 4px; }
+.mock-hero { flex: 1; border-radius: 6px; background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(16,185,129,0.12)); display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 10px; }
+.mock-hero .mk { width: 45%; height: 8px; border-radius: 3px; background: rgba(241,245,249,0.6); }
+.mock-hero .mk-btn { width: 24%; height: 16px; border-radius: 4px; background: var(--blue); }
+.mock-cols { display: flex; gap: 8px; flex: 1; }
+.mock-main { flex: 1; display: flex; flex-direction: column; gap: 7px; justify-content: center; }
+.mock-side { width: 26%; background: rgba(148,163,184,0.16); border-radius: 4px; }
+.mock-row { height: 10px; border-radius: 3px; background: rgba(148,163,184,0.16); }
+.mock-txt { width: 70%; }
+.mock-products { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+.mock-product { border-radius: 4px; background: rgba(148,163,184,0.14); }
+.mock-bar-chart { flex: 1; display: flex; align-items: flex-end; gap: 6px; }
+.mock-bar-chart i { flex: 1; border-radius: 3px 3px 0 0; background: rgba(59,130,246,0.6); min-height: 14px; }
+.mock-bar-chart i:nth-child(odd) { background: rgba(16,185,129,0.55); }
+.mock-chat { flex: 1; display: flex; flex-direction: column; gap: 8px; justify-content: flex-end; }
+.mock-msg { max-width: 70%; height: 18px; border-radius: 9px; background: rgba(16,185,129,0.25); align-self: flex-start; }
+.mock-msg:last-child { align-self: flex-end; background: rgba(59,130,246,0.3); }
+.mock-form { display: flex; flex-direction: column; gap: 6px; }
+.mock-input { height: 14px; border-radius: 4px; background: rgba(148,163,184,0.16); }
+.mock-btn { height: 18px; width: 42%; border-radius: 4px; background: var(--blue); }
+.mock-result { display: flex; align-items: center; justify-content: center; height: 34px; border-radius: 6px; background: rgba(245,158,11,0.22); margin-top: 2px; }
+.mock-rbar { width: 45%; height: 10px; border-radius: 3px; background: rgba(245,158,11,0.75); }
+.mock-niche { color: var(--muted); font-size: 0.85rem; margin-bottom: 8px; }
+.mock-price { display: inline-block; font-family: var(--mono); font-size: 0.85rem; color: var(--emerald); border: 1px solid rgba(16,185,129,0.4); padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+.mock-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text); font-weight: 700; }
+.mock-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 12px; flex-grow: 1; }
+.mock-card .badges { margin-bottom: 12px; }
+.mock-cta { color: var(--blue); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+.mock-cta:hover { text-decoration: underline; }
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 900px) {
