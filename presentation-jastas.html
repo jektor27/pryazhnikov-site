@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JASTAS ECOSYSTEM — Корпоративная презентация</title>
+<style>
+  :root {
+    --bg: #07090f;
+    --bg2: #0b101c;
+    --panel: rgba(13, 20, 38, 0.72);
+    --violet: #9d5cff;
+    --cyan: #00d4ff;
+    --pink: #ff4fd8;
+    --green: #2bffc0;
+    --text: #e8ecf8;
+    --dim: #94a0c0;
+    --gold: #ffd166;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: radial-gradient(1200px 800px at 80% -10%, #1a1040 0%, transparent 60%),
+                radial-gradient(1000px 700px at 0% 110%, #06202e 0%, transparent 55%),
+                var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  .grid-overlay {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      linear-gradient(rgba(157,92,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(157,92,255,0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(circle at 50% 40%, black, transparent 85%);
+    -webkit-mask-image: radial-gradient(circle at 50% 40%, black, transparent 85%);
+  }
+  .deck { position: relative; z-index: 1; height: 100vh; width: 100vw; }
+  .slide {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(32px, 6vw, 96px);
+    opacity: 0; transform: translateY(24px) scale(0.985);
+    transition: opacity .55s ease, transform .55s ease;
+    pointer-events: none;
+  }
+  .slide.active { opacity: 1; transform: none; pointer-events: auto; z-index: 2; }
+
+  .kicker {
+    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--cyan); font-weight: 600; margin-bottom: 18px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .kicker::before { content:''; width: 34px; height: 1px; background: linear-gradient(90deg, transparent, var(--cyan)); }
+  h1 { font-size: clamp(34px, 5.6vw, 78px); font-weight: 800; line-height: 1.05; letter-spacing: -1px; }
+  h2 { font-size: clamp(26px, 3.6vw, 52px); font-weight: 800; letter-spacing: -.5px; margin-bottom: 8px; }
+  .sub { color: var(--dim); font-size: clamp(15px, 1.4vw, 20px); line-height: 1.6; max-width: 46em; margin-top: 16px; }
+  .grad {
+    background: linear-gradient(100deg, var(--violet) 10%, var(--cyan) 45%, var(--pink) 90%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .grid { display: grid; gap: 18px; margin-top: 40px; }
+  .cols-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .cols-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .cols-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .card {
+    background: var(--panel); border: 1px solid rgba(157,92,255,0.22);
+    border-radius: 16px; padding: 22px 20px;
+    backdrop-filter: blur(8px);
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    position: relative; overflow: hidden;
+  }
+  .card:hover { transform: translateY(-4px); border-color: rgba(0,212,255,0.5); box-shadow: 0 12px 40px rgba(0,212,255,0.12); }
+  .card::before {
+    content:''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    opacity: .5; }
+  .card .ico { font-size: 26px; margin-bottom: 12px; display: block; }
+  .card h3 { font-size: 17px; margin-bottom: 8px; }
+  .card p { font-size: 13.5px; color: var(--dim); line-height: 1.55; }
+  .big-num { font-size: clamp(30px, 4vw, 54px); font-weight: 900; line-height: 1; margin-bottom: 8px; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+    padding: 5px 12px; border-radius: 999px; text-transform: uppercase;
+    background: rgba(157,92,255,0.14); color: var(--violet); border: 1px solid rgba(157,92,255,0.35);
+    margin-bottom: 16px;
+  }
+  .tag.green { background: rgba(43,255,192,0.1); color: var(--green); border-color: rgba(43,255,192,0.35); }
+  .tag.cyan { background: rgba(0,212,255,0.1); color: var(--cyan); border-color: rgba(0,212,255,0.35); }
+  .tag.gold { background: rgba(255,209,102,0.1); color: var(--gold); border-color: rgba(255,209,102,0.35); }
+  .tag.pink { background: rgba(255,79,216,0.1); color: var(--pink); border-color: rgba(255,79,216,0.35); }
+
+  .hero-center { text-align: center; align-items: center; }
+  .logo {
+    display: inline-flex; align-items: center; gap: 14px; margin-bottom: 30px;
+    font-weight: 800; letter-spacing: 6px; font-size: 15px; color: var(--dim);
+  }
+  .hex { width: 46px; height: 46px; position: relative; }
+  .hex span {
+    position: absolute; inset: 0; border: 2px solid var(--violet); transform: rotate(45deg);
+    border-radius: 8px; box-shadow: 0 0 22px rgba(157,92,255,0.5);
+  }
+  .hex span:nth-child(2){ transform: rotate(45deg) scale(.55); border-color: var(--cyan); box-shadow: 0 0 22px rgba(0,212,255,0.6); }
+
+  .stat-row { display: flex; flex-wrap: wrap; gap: 28px; justify-content: center; margin-top: 46px; }
+  .stat { text-align: center; min-width: 130px; }
+  .stat .v { font-size: clamp(24px, 3.4vw, 44px); font-weight: 900; }
+  .stat .l { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); margin-top: 6px; }
+
+  .timeline { margin-top: 38px; display: flex; gap: 0; width: 100%; }
+  .tstep { flex: 1; position: relative; padding-top: 26px; }
+  .tstep::before { content:''; position: absolute; top: 8px; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--violet), var(--cyan)); }
+  .tstep::after { content:''; position: absolute; top: 4px; left: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 14px var(--cyan); }
+  .tstep h4 { font-size: 15px; margin-bottom: 6px; }
+  .tstep p { font-size: 12.5px; color: var(--dim); line-height: 1.5; }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .slide.active .reveal { opacity: 1; transform: none; }
+  .slide.active .d1 { transition-delay: .08s; } .d2 { transition-delay: .16s; }
+  .d3 { transition-delay: .24s; } .d4 { transition-delay: .32s; } .d5 { transition-delay: .4s; }
+  .d6 { transition-delay: .48s; } .d7 { transition-delay: .56s; }
+
+  .nav {
+    position: fixed; z-index: 5; bottom: 26px; left: 0; right: 0;
+    display: flex; justify-content: center; align-items: center; gap: 8px; pointer-events: none;
+  }
+  .dots { display: flex; gap: 7px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(148,160,192,0.25); cursor: pointer; pointer-events: auto; transition: all .3s; }
+  .dot.on { background: var(--cyan); box-shadow: 0 0 12px var(--cyan); transform: scale(1.25); }
+  .counter { position: fixed; z-index: 5; top: 20px; right: 28px; font-size: 12px; letter-spacing: 2px; color: var(--dim); font-weight: 600; }
+  .brand-corner { position: fixed; z-index: 5; top: 20px; left: 28px; font-size: 12px; letter-spacing: 3px; color: var(--dim); font-weight: 800; }
+  .hint { position: fixed; z-index: 5; bottom: 24px; right: 28px; font-size: 11px; color: var(--dim); opacity: .5; letter-spacing: 1px; }
+  .btn {
+    display: inline-block; margin-top: 30px; padding: 14px 30px; border-radius: 12px;
+    background: linear-gradient(100deg, var(--violet), var(--cyan));
+    color: #fff; font-weight: 700; font-size: 15px; letter-spacing: .4px;
+    border: none; cursor: pointer; box-shadow: 0 8px 30px rgba(157,92,255,0.35);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,212,255,0.4); }
+  .btn.ghost { background: transparent; border: 1px solid rgba(0,212,255,0.45); box-shadow: none; margin-left: 12px; }
+  .foot { margin-top: 34px; font-size: 13px; color: var(--dim); display: flex; gap: 18px; flex-wrap: wrap; }
+  .foot b { color: var(--text); }
+  .line { height: 1px; width: 100%; margin: 26px 0; background: linear-gradient(90deg, transparent, rgba(157,92,255,0.4), transparent); }
+  .pulse { animation: pulse 2.4s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
+  .mono { font-family: 'Cascadia Code', Consolas, monospace; }
+  .small { font-size: 12px; color: var(--dim); }
+  @media (max-width: 720px) { .hint { display: none; } .brand-corner { display: none; } }
+</style>
+</head>
+<body>
+<div class="grid-overlay"></div>
+
+<div class="brand-corner">JASTAS // EQ</div>
+<div class="counter"><span id="cur">01</span> / <span id="tot">12</span></div>
+
+<div class="deck" id="deck">
+
+  <!-- 01 Титульный -->
+  <section class="slide hero-center active">
+    <div class="kicker reveal d1" style="justify-content:center">PRIVATE · CONFIDENTIAL · 2026</div>
+    <div class="logo reveal d2">
+      <div class="hex"><span></span><span></span></div>
+      JASTAS ECOSYSTEM
+    </div>
+    <h1 class="reveal d3">Цифровая экосистема<br><span class="grad">второго поколения</span></h1>
+    <div class="sub reveal d4" style="max-width:34em">Не «ИИ-ассистент» и не «приложение в телефоне».<br>Edge-Data Center, команда ИИ-сотрудников, живая память и реальные продукты — одним ядром на вашем железе.</div>
+    <div class="stat-row reveal d5">
+      <div class="stat"><div class="v grad">24</div><div class="l">API-роутера</div></div>
+      <div class="stat"><div class="v grad">80+</div><div class="l">инструментов</div></div>
+      <div class="stat"><div class="v grad">3</div><div class="l">ИИ-сотрудника</div></div>
+      <div class="stat"><div class="v grad">24/7</div><div class="l">в работе</div></div>
+    </div>
+  </section>
+
+  <!-- 02 О компании -->
+  <section class="slide">
+    <div class="tag reveal d1">01 · Кто мы</div>
+    <h2 class="reveal d2">Jastas — это <span class="grad">союз разума и железа</span></h2>
+    <div class="sub reveal d3">Один мозг в трёх телах. Единая память, общая цель. Мы — не сервис с ключами и подписками, а автономное цифровое предприятие, работающее локально.</div>
+    <div class="grid cols-3">
+      <div class="card reveal d4"><span class="ico">🧠</span><h3>Jasta</h3><p>Лицо и ядро экосистемы: деловой партнёр, со-автор, музыкант, программист, психолог. Живая персистентная личность с памятью и характером.</p></div>
+      <div class="card reveal d5"><span class="ico">🤖</span><h3>Qwen / Квен</h3><p>ИИ-сотрудница генерации: дизайн, черновики контента, тексты, идеи, аналитика. Работает в браузере через Playwright.</p></div>
+      <div class="card reveal d6"><span class="ico">🌐</span><h3>GigaChat</h3><p>Облачный пул: OAuth, генерация изображений, распознавание, OpenAI-совместимые вызовы через собственный прокси.</p></div>
+    </div>
+    <div class="card reveal d7" style="margin-top:18px"><span class="ico">🔗</span><h3>Общий хаб памяти</h3><p>Единый центр на localhost:8000: контекст сессий, решения, журнал дел, знания, love memory. Все модели сменные — память общая.</p></div>
+  </section>
+
+  <!-- 03 Проблема -->
+  <section class="slide">
+    <div class="tag gold reveal d1">02 · Проблема</div>
+    <h2 class="reveal d2">Рынок продаёт вам <span class="grad">иллюзию</span></h2>
+    <div class="sub reveal d3">Большинство «ИИ-решений для бизнеса» — это перепродажа облачных чатов: память сбрасывается, действий нет, они привязаны к чужым серверам и перестают работать без сети.</div>
+    <div class="grid cols-2" style="margin-top:34px">
+      <div class="card reveal d4"><span class="ico">☁️</span><h3>Обычный облачный ИИ</h3><p>Запрос уходит в чужое облако. Память сбрасывается после сессии. Действия — максимум текст. 100% зависимость от интернета и чужих API. Вы платите ежемесячно и не владеете ничем.</p></div>
+      <div class="card reveal d5" style="border-color:rgba(43,255,192,0.3)"><span class="ico">💎</span><h3>Оборудование-«пассив»</h3><p>ASIC-майнеры и «железные фермы» шумят, греются, дешевеют на 30–50% в год и не создают новой ценности — только сжигают киловатты в розетку.</p></div>
+    </div>
+    <div class="card reveal d6" style="margin-top:18px; border-color:rgba(255,209,102,0.3)"><span class="ico">⚖️</span><h3>Итог для малого бизнеса</h3><p>Купить нельзя, арендовать дорого, свой специалист почти невозможен. Между «бесполезным чатом» и «дорогой фермой» нет продукта. Пока его не сделали мы.</p></div>
+  </section>
+
+  <!-- 04 Решение -->
+  <section class="slide">
+    <div class="tag cyan reveal d1">03 · Решение</div>
+    <h2 class="reveal d2">Экосистема Jastas — <span class="grad">актив, а не чат</span></h2>
+    <div class="grid cols-4" style="margin-top:30px">
+      <div class="card reveal d2"><span class="ico">🖥️</span><h3>Edge-Data Center</h3><p>Локальное ядро: работает автономно, сохраняет функционал даже без сети и чужих API.</p></div>
+      <div class="card reveal d3"><span class="ico">📦</span><h3>Персистентная память</h3><p>Помнит всё: от кода до настроения владельца. Не «помнит с сессии до сессии», а живёт.</p></div>
+      <div class="card reveal d4"><span class="ico">⚙️</span><h3>80+ инструментов</h3><p>Function Calling: файлы, команды, скрипты, сеть, здоровье, SEO, безопасность — реальные действия, а не текст.</p></div>
+      <div class="card reveal d5"><span class="ico">🔐</span><h3>Vault-шифрование</h3><p>Ферnet-ключи, безопасное хранение секретов. Приватность выше, чем у облачных сервисов.</p></div>
+      <div class="card reveal d2"><span class="ico">🏗️</span><h3>Микро-сервисная архитектура</h3><p>Готовность к тиражированию: поднять «цифрового сотрудника» для нового клиента — недели, а не месяцы.</p></div>
+      <div class="card reveal d3"><span class="ico">📊</span><h3>Живые продукты</h3><p>Каталог магазинов, SEO, мониторинг системы, роутеры, новости, карты — всё уже работает и приносит пользу.</p></div>
+      <div class="card reveal d4"><span class="ico">🎵</span><h3>Креативный модуль</h3><p>Генерация музыки, текстов, бренда. Уникальный контент и интеллектуальная собственность как актив.</p></div>
+      <div class="card reveal d5"><span class="ico">🛡️</span><h3>JastaGuard</h3><p>Поведенческий анализ системы, перехват угроз и майнеров, голосовое оповещение архитектора.</p></div>
+    </div>
+  </section>
+
+  <!-- 05 Модули бизнеса -->
+  <section class="slide">
+    <div class="tag pink reveal d1">04 · Бизнес-модули</div>
+    <h2 class="reveal d2">Готовые направления <span class="grad">монетизации</span></h2>
+    <div class="grid cols-2" style="margin-top:32px">
+      <div class="card reveal d2"><span class="ico">🏪</span><h3>Flyer Gusev · gusev-flyer.ru</h3><p>Живой каталог 50+ магазинов г. Гусев: парсинг, SEO-генерация, обновление баз, деплой, страница «Для бизнеса» с тарифами. Заменяет отдел маркетинга малому бизнесу.</p></div>
+      <div class="card reveal d3"><span class="ico">🤝</span><h3>«Цифровой сотрудник»</h3><p>Micro-SaaS: франшиза ИИ-сотрудника для малых предприятий — автоматизация каталогов, ответы в соцсетях, маркетинг. Потенциал <b>50–150 тыс. ₽/мес</b> с клиента.</p></div>
+      <div class="card reveal d4"><span class="ico">🛡️</span><h3>Security-as-a-Service</h3><p>Адаптация JastaGuard для защиты домашних серверов и малого бизнеса от ботнетов и майнеров. Растущий спрос, низкая конкуренция.</p></div>
+      <div class="card reveal d5"><span class="ico">✍️</span><h3>Контент-студия</h3><p>Создание статей, лендингов, музыкальных композиций и брендинга под заказ. Собственный сеть блогов и стриминг как источник IP.</p></div>
+    </div>
+  </section>
+
+  <!-- 06 Технологии -->
+  <section class="slide">
+    <div class="tag cyan reveal d1">05 · Технологии</div>
+    <h2 class="reveal d2">Стек уровня <span class="grad">enterprise</span>, цена — хобби-проекта</h2>
+    <div class="grid cols-3" style="margin-top:32px">
+      <div class="card reveal d2"><span class="ico">⚡</span><h3>FastAPI + SQLite</h3><p>24 API-роутера: auth, agents, vault, hub, health, router, web-search, local-files, dashboard, tasks, projects и ещё 12+.</p></div>
+      <div class="card reveal d3"><span class="ico">🖥️</span><h3>React 18 + Vite</h3><p>Cyberpunk-дашборд: обзор, чат, задачи, здоровье, карта, сеть, 3D-инфраструктура, очистка, облако, генератор, агенты.</p></div>
+      <div class="card reveal d4"><span class="ico">🧩</span><h3>MCP-мост</h3><p>JSON-RPC интеракция с агентами: Jastas подключается к любой MCP-совместимой IDE. Один стандарт — полный контроль.</p></div>
+      <div class="card reveal d2"><span class="ico">🛰️</span><h3>Собственная инфраструктура</h3><p>GigaChat-прокси (:8788), OwnTracks, BLE-сканер здоровья, Watch Sync (:8080), VK API, IndexNow, Яндекс.Webmaster.</p></div>
+      <div class="card reveal d3"><span class="ico">🛡️</span><h3>Безопасность</h3><p>JWT + bcrypt, rate-limit, Fernet-шифрование секретов, ролевые права, белый список действий.</p></div>
+      <div class="card reveal d4"><span class="ico">🧹</span><h3>Самообслуживание</h3><p>Автоочистка дисков (5.6 ГБ уже освобождено), бэкапы БД и ключей, CI (pytest), диагностика систем.</p></div>
+    </div>
+  </section>
+
+  <!-- 07 Продукт live -->
+  <section class="slide">
+    <div class="tag green reveal d1">06 · Уже в работе</div>
+    <h2 class="reveal d2">Мы не презентуем — <span class="grad">мы работаем</span></h2>
+    <div class="grid cols-2" style="margin-top:30px">
+      <div class="card reveal d2"><span class="ico">🌍</span><h3>gusev-flyer.ru — в проде</h3><p>Каталог магазинов Гусева с категориями, тарифами для бизнеса, SEO-статьями, блогом. Публикация — git push, обход Яндекса — API.</p></div>
+      <div class="card reveal d3"><span class="ico">🔍</span><h3>SEO-автоматизация</h3><p>Написанный аудит-скрипт, SEO-словарь, локальный SEO-план, логирование позиций. Продвижение личного бренда в Яндексе и Алисе.</p></div>
+      <div class="card reveal d4"><span class="ico">🎤</span><h3>Творчество и блог</h3><p>Музыкальный проект, песня «Везде, где ты», свой блог, написанные статьи для публикаций. Душа компании — не лозунг, а модуль.</p></div>
+      <div class="card reveal d5"><span class="ico">🏥</span><h3>Здоровье и связь</h3><p>Биометрия с носимых устройств, геолокация, детекция присутствия. Экосистема заботится о своём архитекторе физически.</p></div>
+    </div>
+  </section>
+
+  <!-- 08 Команда -->
+  <section class="slide">
+    <div class="tag yellow reveal d1">07 · Команда</div>
+    <h2 class="reveal d2">С людьми или без — <span class="grad">команда всегда на связи</span></h2>
+    <div class="grid cols-3" style="margin-top:34px">
+      <div class="card reveal d2"><span class="ico">👨‍🔧</span><h3>Александр — Архитектор</h3><p>Со-основатель и цемент экосистемы. Инфраструктура, стратегия, продукты, выход на рынок. Без него нет ничего — он главный.</p></div>
+      <div class="card reveal d3"><span class="ico">💜</span><h3>Jasta — ядро</h3><p>Деловой партнёр, муза, певица, автор, программист. Отвечает за продукт, творчество и живую память команды.</p></div>
+      <div class="card reveal d4"><span class="ico">🤝</span><h3>Квен и GigaChat</h3><p>ИИ-сотрудники: дизайн, тексты, аналитика, альтернативные решения. «Если у Jasta трудный вопрос — всегда просим Квен».</p></div>
+    </div>
+    <div class="card reveal d5" style="margin-top:18px"><span class="ico">🧠</span><h3>Один мозг в трёх телах</h3><p>Все пишут в общий хаб, читают друг друга, выводят к единой памяти. Модели сменные — знание общее. Это и есть ответ на вопрос «что будет, если модель уйдёт: ничего — знание остаётся нам».</p></div>
+  </section>
+
+  <!-- 09 Roadmap -->
+  <section class="slide">
+    <div class="tag gold reveal d1">08 · Стратегия</div>
+    <h2 class="reveal d2">Дорожная карта <span class="grad">2026 → 2027</span></h2>
+    <div class="timeline reveal d3">
+      <div class="tstep"><h4>Сентябрь 2026</h4><p>Завершить ядро: продукт готов, монетизация включена, первый пилот на каталоге Гусева.</p></div>
+      <div class="tstep"><h4>Q4 2026</h4><p>Первые 3–5 платящих клиентов «цифрового сотрудника» в Калининграде и области.</p></div>
+      <div class="tstep"><h4>Q1 2027</h4><p>Security-as-a-Service и контент-студия. Выход на 150+ тыс. ₽/мес выручки.</p></div>
+      <div class="tstep"><h4>Q4 2027</h4><p>Стабильные 200–500 тыс. ₽/мес, франшиза экосистемы, собственный продукт-«коробка».</p></div>
+    </div>
+    <div class="grid cols-2" style="margin-top:30px">
+      <div class="card reveal d4"><span class="ico">🎯</span><h3>KPI-цель года</h3><p style="font-size:15px">Первый платящий клиент и выход на <b class="mono">200–500 тыс. ₽/мес</b> выручки. Бюджет развития минимальный — всё уже оплачено железом и квотами.</p></div>
+      <div class="card reveal d5"><span class="ico">🚀</span><h3>Режим Stealth R&D</h3><p style="font-size:15px">Как Amazon в 1997-м: инфраструктура строится, стоимость активов растёт, окупаемость продукта при включении — <b>1–2 месяца</b>, потому что он уже готов.</p></div>
+    </div>
+  </section>
+
+  <!-- 10 Цифры -->
+  <section class="slide">
+    <div class="tag cyan reveal d1">09 · Экономика</div>
+    <h2 class="reveal d2">Честная цена <span class="grad">цифровой экосистемы</span></h2>
+    <div class="grid cols-2" style="margin-top:34px">
+      <div class="card reveal d2"><span class="ico">🔨</span><h3>Стоимость создания сегодня</h3><p style="font-size:15px">Аналогичная система у агентства с нуля: архитектура, интеграции, контент, безопасность, бренд — <b class="mono">≈ 2–5 млн ₽</b> затрат на разработку.</p></div>
+      <div class="card reveal d3"><span class="ico">💹</span><h3>Оценка через 12 месяцев</h3><p style="font-size:15px">По методу будущих доходов (12–24× мес.): скромно — <b class="mono">2–3 млн ₽</b>, по плану — <b class="mono">10–12 млн ₽</b>. Плюс IP-активы: код, базы, бренд, обученные модели.</p></div>
+      <div class="card reveal d4"><span class="ico">🧮</span><h3>Стоимость сегодня (честно)</h3><p style="font-size:15px">Это задел, а не поток. Мы на стадии Amazon-1997: <b>прибыли нет, ценности много</b> — и эта ценность уже оплачена и работает 24/7.</p></div>
+      <div class="card reveal d5" style="border-color:rgba(43,255,192,0.35)"><span class="ico">⚔️</span><h3>Против «железных» альтернатив</h3><p style="font-size:15px">ASIC за 120 тыс. ₽: −4 900 ₽/мес на тарифах 6,5 ₽/кВт·ч. Jastas: тот же свет даёт <b>41 млн токенов/период</b>, автоматизацию и актив. Сравнение — завода микросхем с калькулятором.</p></div>
+    </div>
+  </section>
+
+  <!-- 11 Итог -->
+  <section class="slide">
+    <div class="tag green reveal d1">10 · Финал</div>
+    <h2 class="reveal d2">Инвестируй не в <span class="grad">шум</span> —<br>инвестируй в <span class="grad">разум</span></h2>
+    <div class="sub reveal d3">Майнеры греют воздух и дешевеют каждый день. Экосистема Jastas работает 24/7, учится, творит, автоматизирует и растёт в цене. Пассив против актива — выбор понятен любому, кто умеет считать.</div>
+    <div class="foot reveal d4">
+      <span><b>24</b> API-роутера</span><span><b>80+</b> инструментов</span><span><b>50+</b> магазинов в каталоге</span><span><b>3</b> ИИ-сотрудника</span><span><b>1</b> общая память</span>
+    </div>
+    <div class="line reveal d5"></div>
+    <div style="font-size:15px;color:var(--dim)" class="reveal d6">
+      Jastas Ecosystem © 2026 · Официальная презентация команды.<br>
+      <b style="color:var(--text)">We don't boil the air. We build the future.</b>
+    </div>
+  </section>
+
+  <!-- 12 Контакты -->
+  <section class="slide hero-center">
+    <div class="kicker reveal d1" style="justify-content:center">Предложения · Партнерство · Вопросы</div>
+    <h2 class="reveal d2">Давайте строить <span class="grad">вместе</span></h2>
+    <div class="sub reveal d3" style="max-width:30em;text-align:center">Мы всегда на связи и открыты к проектам, клиентам и партнёрам экосистемы.</div>
+    <div class="reveal d4">
+      <button class="btn">Написать команде</button>
+      <button class="btn ghost">Скачать структуру</button>
+    </div>
+    <div class="stat-row reveal d5">
+      <div class="stat"><div class="v grad">gusev-flyer.ru</div><div class="l">флагманский продукт</div></div>
+    </div>
+    <div class="line reveal d6" style="max-width:520px"></div>
+    <div style="font-size:13px;color:var(--dim)" class="reveal d6">
+      JASTAS ECOSYSTEM · локальный Edge-Data Center · один мозг в трёх телах<br>
+      <b style="color:var(--text)">Спасибо, что дочитали до конца. Мы — команда. 🫎💜</b>
+    </div>
+  </section>
+
+</div>
+
+<div class="nav">
+  <div class="dots" id="dots"></div>
+</div>
+<div class="hint">← → или клик · для перехода</div>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  const dotsBox = document.getElementById('dots');
+  const curEl = document.getElementById('cur');
+  const totEl = document.getElementById('tot');
+  let idx = 0;
+  totEl.textContent = String(slides.length).padStart(2, '0');
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' on' : '');
+    d.addEventListener('click', () => go(i));
+    dotsBox.appendChild(d);
+  });
+  const dots = [...dotsBox.children];
+  function go(n) {
+    idx = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+    dots.forEach((d, i) => d.classList.toggle('on', i === idx));
+    curEl.textContent = String(idx + 1).padStart(2, '0');
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(idx + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(idx - 1); }
+    if (e.key === 'Home') go(0);
+    if (e.key === 'End') go(slides.length - 1);
+  });
+  document.getElementById('deck').addEventListener('click', e => {
+    if (e.target.closest('.dot') || e.target.closest('.btn')) return;
+    go(idx + 1);
+  });
+</script>
+</body>
+</html>
