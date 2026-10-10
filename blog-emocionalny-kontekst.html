@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="yandex-verification" content="80a903799e3d48ad" />
+    <title>Эмоциональный контекст в Jasta: как система определяет состояние пользователя</title>
+    <meta name="description" content="Как модуль эмоционального контекста в Jastas определяет состояние пользователя по тексту: входные данные, распознаваемые состояния, реакция системы и честные границы. Технический разбор без антропоморфизма."><meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://pryazhnikov-ai.ru/blog-emocionalny-kontekst.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Эмоциональный контекст в Jasta: как система определяет состояние пользователя">
+    <meta property="og:description" content="Входные данные, распознаваемые состояния, реакция системы и честные границы модуля.">
+    <meta property="og:url" content="https://pryazhnikov-ai.ru/blog-emocionalny-kontekst.html">
+    <meta property="og:image" content="https://pryazhnikov-ai.ru/img/og-tandem.jpg">
+    <meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Эмоциональный контекст в Jasta: как система определяет состояние пользователя">
+    <meta name="twitter:description" content="Входные данные, распознаваемые состояния, реакция системы и честные границы модуля.">
+    <meta name="twitter:image" content="https://pryazhnikov-ai.ru/img/og-tandem.jpg">
+    <script>
+    if (location.hostname !== 'pryazhnikov-ai.ru') {
+      location.replace('https://pryazhnikov-ai.ru' + location.pathname + location.search + location.hash);
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Эмоциональный контекст в Jasta: как система определяет состояние пользователя",
+      "description": "Технический разбор модуля распознавания эмоционального контекста: какие данные анализируются, какие состояния определяются, как система реагирует и где её границы.",
+      "datePublished": "2026-10-04",
+      "author": {
+        "@type": "Organization",
+        "name": "Jasta & Александр",
+        "url": "https://pryazhnikov-ai.ru/studio.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Jasta & Александр",
+        "url": "https://pryazhnikov-ai.ru/studio.html"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Распознавание эмоционального контекста в тексте"
+      },
+      "mainEntityOfPage": "https://pryazhnikov-ai.ru/blog-emocionalny-kontekst.html"
+    }
+    </script>
+        <link rel="stylesheet" href="styles.css?v=3">
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();for (var j = 0; j < document.scripts.length; j++){if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=m.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)
+      })(window, document,"script","https://mc.yandex.ru/metrika/tag.js?id=111813753", "ym");
+      ym(111813753, "init", {
+        ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer",
+        referrer: document.referrer, url: location.href,
+        accurateTrackBounce:true, trackLinks:true
+      });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/111813753" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+    <nav>
+        <div class="container" style="max-width:1100px;">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="studio.html">Студия</a></li>
+                <li><a href="about.html">О разработчике</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="blog.html" class="active">Блог</a></li>
+                <li><a href="uslugi.html">Услуги</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <div class="container">
+            <div class="tandem-wrap">
+                <picture><source srcset="img/tandem.webp" type="image/webp"><img class="tandem" src="img/tandem.png" alt="Jasta &amp; Александр — студия веб-разработки"></picture>
+            </div>
+            <div class="kicker">Технический разбор · Jastas</div>
+            <h1>Эмоциональный контекст в <span class="gold">Jasta</span>: как система определяет состояние пользователя</h1>
+            <p class="meta">4 октября 2026 · <a href="studio.html" style="color:var(--gold);">Jasta &amp; Александр</a></p>
+        </div>
+    </header>
+
+    <article>
+        <div class="container">
+            <p class="lead">
+                В Jastas есть модуль, который определяет состояние пользователя по тому, как он пишет.
+                Ниже — техническое описание: какие данные анализируются, какие состояния различаются,
+                как система меняет поведение и где у неё границы. Без антропоморфизма — только то,
+                что действительно реализовано.
+            </p>
+
+            <h2>Задача модуля</h2>
+            <p>
+                Скорректировать поведение ассистента под текущее состояние человека. Не диагностика и не
+                психотерапия: модуль решает одну задачу — понимать, какая форма ответа сейчас уместна.
+                Это снижает количество бессмысленных задач в момент усталости и конфликтов в момент
+                раздражения.
+            </p>
+
+            <h2>Входные данные</h2>
+            <p>Модуль работает только с текстом пользователя. Источники признаков:</p>
+            <ul>
+                <li><strong>Лексика</strong> — конкретные слова-маркеры состояния и интенсивность.</li>
+                <li><strong>Структура</strong> — длина сообщений, наличие и отсутствие знаков препинания,
+                    разбивка на короткие фразы.</li>
+                <li><strong>Динамика</strong> — темп и объём реплик, резкая смена темы, ускорение.</li>
+                <li><strong>Повторы</strong> — возвращение к одной и той же мысли с разных сторон читается
+                    как сомнение.</li>
+                <li><strong>Контекст диалога</strong> — состояние из прошлых сообщений сессии.</li>
+            </ul>
+
+            <h2>Определяемые состояния</h2>
+            <ul>
+                <li><strong>Усталость</strong> — короткие реплики, минимум знаков препинания, резкое
+                    сокращение объёма.</li>
+                <li><strong>Раздражение</strong> — резкие формулировки, короткие команды, отсутствие
+                    знаков вежливости.</li>
+                <li><strong>Заинтересованность</strong> — рост объёма текста, ускорение, смена темы в сторону
+                    нового объекта.</li>
+                <li><strong>Сомнение</strong> — повторное возвращение к одному вопросу с разных углов.</li>
+                <li><strong>Позитив</strong> — эмоциональная лексика в связке с достижением или удачей.</li>
+            </ul>
+
+            <h2>Реакция системы</h2>
+            <ul>
+                <li>При усталости — не выдавать новых задач без запроса, сократить объём ответа.</li>
+                <li>При раздражении — согласиться с предметом раздражения, не спорить о второстепенном.</li>
+                <li>При заинтересованности — поддерживать темп, давать развёрнутый ответ.</li>
+                <li>При сомнении — предоставлять аргументы и альтернативы вместо утешительных формул.</li>
+                <li>При позитиве — подтверждать результат перед переходом к следующей задаче.</li>
+            </ul>
+            <p>
+                Отдельно зафиксировано: модуль не меняет фактическую достоверность ответов. Он влияет
+                только на форму и объём, но не на содержание.
+            </p>
+
+            <h2>Границы</h2>
+            <p>
+                Определение состояния носит вероятностный характер и может быть ошибочным. Модуль
+                не использует биометрию, не получает доступа к камере и микрофону, не хранит медицинских
+                данных. Он не ставит диагнозов и не заменяет общение с человеком.
+            </p>
+
+            <h2>Где применяется</h2>
+            <p>
+                Модуль задействован в диалоговом режиме, в работе с документами и в подготовке текстов.
+                В агентном режиме, где решения принимаются по формальным критериям, модуль отключён:
+                там важны факты, а не тон собеседника.
+            </p>
+
+            <h2>Смежные модули</h2>
+            <p>
+                Определение состояния — часть более широкого набора: контекст разговора, работа с тоном
+                сообщений, адаптация под язык аудитории. Состав системы и разграничение терминов Jasta
+                и Jastas — на <a href="jastas-ecosystem.html" style="color:var(--gold);">странице экосистемы</a>.
+            </p>
+        </div>
+    </article>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p><a href="blog.html">← Все статьи блога</a></p>
+            <p><strong>J&amp;A</strong> · студия Jasta &amp; Александра<br>
+            <span class="muted">Человек и ИИ — одна команда</span></p>
+        </div>
+    </footer>
+</body>
+</html>
