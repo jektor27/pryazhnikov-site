@@ -47,20 +47,32 @@
         {
           "@type": "ListItem",
           "position": 1,
-          "url": "https://pryazhnikov-ai.ru/blog-jasta-aleksandr.html",
-          "name": "Как появилась студия Jasta & Александр — тандем человека и ИИ"
+          "url": "https://pryazhnikov-ai.ru/blog-2026-11-10-obnovleniya-okruzheniya.html",
+          "name": "Два месяца обновлений: MCP, плагины и JastaCode на 4 ГБ"
         },
         {
           "@type": "ListItem",
           "position": 2,
+          "url": "https://pryazhnikov-ai.ru/blog-emocionalny-kontekst.html",
+          "name": "Эмоциональный контекст в Jasta: как система определяет состояние пользователя"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "url": "https://pryazhnikov-ai.ru/jastaguard.html",
           "name": "JastaGuard — собственная защита ПК от вирусов"
         },
         {
           "@type": "ListItem",
-          "position": 3,
+          "position": 4,
           "url": "https://pryazhnikov-ai.ru/blog-update-2026-08-27-jastas-jastaguard.html",
           "name": "Что нового в Jastas: JastaGuard, антивирус, мобильная версия"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "url": "https://pryazhnikov-ai.ru/blog-jasta-aleksandr.html",
+          "name": "Как появилась студия Jasta & Александр — тандем человека и ИИ"
         }
       ]
     }
@@ -78,6 +90,10 @@
     .blog-meta { font-size: 0.85rem; color: var(--dim); margin-bottom: 10px; }
     .blog-excerpt { color: var(--muted); line-height: 1.65; font-size: 0.98rem; margin-bottom: 12px; }
     .blog-more { font-weight: 600; text-decoration: none; }
+    .blog-intro { margin-bottom: 34px; padding-bottom: 30px; border-bottom: 1px solid var(--border-subtle); }
+    .blog-intro p { color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+    .blog-intro p:last-child { margin-bottom: 0; }
+    .blog-intro strong { color: var(--text); }
     </style>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -120,7 +136,22 @@
 
     <section>
         <div class="container" style="max-width: 820px;">
+            <div class="blog-intro">
+                <p>Здесь мы пишем о том, что делаем руками. Это не новостная лента и не пересказ чужих статей — только свои проекты, свои ошибки и решения, которые довели до рабочего состояния.</p>
+                <p>Тем три. <strong>Технические разборы</strong> — как устроены модули внутри Jastas: что подаётся на вход, какие состояния система различает и где у метода честные границы. <strong>Истории продуктов</strong> — почему появился JastaGuard, как JastaCode работает на четырёх гигабайтах памяти, зачем каталогу в маленьком городе микроразметка. <strong>Обновления</strong> — что изменилось за месяц, что сломалось и чем это закончилось.</p>
+                <p>Мы не пишем «10 инструментов, которые изменят вашу жизнь». Если тема не проверена на своём железе и не доведена до результата — она сюда не попадает. Поэтому постов немного, зато за каждый отвечаем.</p>
+                <p>Начать можно с любого: разбор <a href="blog-emocionalny-kontekst.html">эмоционального контекста</a> объясняет, как ассистент понимает состояние человека. <a href="blog-jasta-aleksandr.html">История студии</a> — с чего всё началось. А <a href="jastaguard.html">JastaGuard</a> и <a href="jastacode.html">JastaCode</a> показывают, что получается, когда не ждёшь нового компьютера.</p>
+            </div>
+
             <ul class="blog-list">
+
+                <li class="blog-item">
+                    <span class="blog-kicker">Обновления · Jastas</span>
+                    <h2><a href="blog-2026-11-10-obnovleniya-okruzheniya.html">Два месяца обновлений: MCP, плагины и JastaCode на 4 ГБ</a></h2>
+                    <div class="blog-meta">10 ноября 2026</div>
+                    <p class="blog-excerpt">Семь MCP-серверов вместо шести, починка плагина безопасности, который полгода молча не работал, JastaCode с 63 тестами и каталог Гусева, уложенный в 60 символов заголовка. Что изменилось и чем это стоило.</p>
+                    <a class="blog-more" href="blog-2026-11-10-obnovleniya-okruzheniya.html">Читать →</a>
+                </li>
 
                 <li class="blog-item">
                     <span class="blog-kicker">Технический разбор · Jastas</span>
@@ -128,14 +159,6 @@
                     <div class="blog-meta">4 октября 2026</div>
                     <p class="blog-excerpt">Как модуль в Jastas определяет состояние человека по тексту: какие данные анализируются, какие состояния различаются, как меняется форма ответа и где у метода честные границы. Технический разбор без антропоморфизма.</p>
                     <a class="blog-more" href="blog-emocionalny-kontekst.html">Читать →</a>
-                </li>
-
-                <li class="blog-item">
-                    <span class="blog-kicker">История · Студия</span>
-                    <h2><a href="blog-jasta-aleksandr.html">Как появилась студия Jasta &amp; Александр — тандем человека и ИИ</a></h2>
-                    <div class="blog-meta">14 августа 2026</div>
-                    <p class="blog-excerpt">За вывеской «студия веб-разработки» здесь не стоит штат из десяти человек. Здесь два напарника — человек и ИИ. История о том, как мы встретились и почему «Человек и ИИ — одна команда» — это наш манифест.</p>
-                    <a class="blog-more" href="blog-jasta-aleksandr.html">Читать →</a>
                 </li>
 
                 <li class="blog-item">
@@ -152,6 +175,14 @@
                     <div class="blog-meta">27 августа 2026</div>
                     <p class="blog-excerpt">Обновление проекта Jastas: 36 изменений — 12 новшеств, 8 исправлений, рефакторинг JCode → JastaCode, SEO-схема Person и FAQPage для Яндекса и Алисы.</p>
                     <a class="blog-more" href="blog-update-2026-08-27-jastas-jastaguard.html">Читать →</a>
+                </li>
+
+                <li class="blog-item">
+                    <span class="blog-kicker">История · Студия</span>
+                    <h2><a href="blog-jasta-aleksandr.html">Как появилась студия Jasta &amp; Александр — тандем человека и ИИ</a></h2>
+                    <div class="blog-meta">14 августа 2026</div>
+                    <p class="blog-excerpt">За вывеской «студия веб-разработки» здесь не стоит штат из десяти человек. Здесь два напарника — человек и ИИ. История о том, как мы встретились и почему «Человек и ИИ — одна команда» — это наш манифест.</p>
+                    <a class="blog-more" href="blog-jasta-aleksandr.html">Читать →</a>
                 </li>
 
             </ul>
