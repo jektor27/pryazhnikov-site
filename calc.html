@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="yandex-verification" content="80a903799e3d48ad" />
+    <title>Калькулятор электромонтажных работ — Гусев</title>
+    <meta name="description" content="Соберите список работ и посчитайте стоимость электромонтажа в Гусеве: розетки, штробление, щиты, заземление. Цены и итог сразу, смету можно скопировать.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://pryazhnikov-ai.ru/calc.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Калькулятор электромонтажных работ — Гусев">
+    <meta property="og:description" content="Розетки, выключатели, штробление, щиты, заземление: отметьте работы и получите стоимость сразу.">
+    <meta property="og:url" content="https://pryazhnikov-ai.ru/calc.html">
+    <meta property="og:image" content="https://pryazhnikov-ai.ru/photo.jpg">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Калькулятор электромонтажных работ — Гусев">
+    <meta name="twitter:description" content="Отметьте работы и получите стоимость сразу. Цены — ориентир, точная сумма после осмотра.">
+    <meta name="twitter:image" content="https://pryazhnikov-ai.ru/photo.jpg">
+    <script>
+    if (location.hostname !== 'pryazhnikov-ai.ru') {
+      location.replace('https://pryazhnikov-ai.ru' + location.pathname + location.search + location.hash);
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Калькулятор электромонтажных работ",
+      "url": "https://pryazhnikov-ai.ru/calc.html",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Любой, работает в браузере",
+      "inLanguage": "ru",
+      "isAccessibleForFree": true,
+      "description": "Расчёт стоимости электромонтажных работ в Гусеве: розетки, выключатели, освещение, штробление, кабель-каналы, щиты, заземление.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Пряжников Александр Иванович",
+        "url": "https://pryazhnikov-ai.ru/about.html"
+      }
+    }
+    </script>
+        <link rel="stylesheet" href="styles.css?v=3">
+    <style>
+    .calc-wrap { max-width: 900px; margin: 0 auto; }
+    .calc-tools { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
+    .calc-search {
+        flex: 1 1 240px; min-height: 46px; padding: 12px 16px; font-size: 1rem;
+        color: var(--text); background: var(--bg-2); border: 1px solid var(--border);
+        border-radius: 10px; outline: none;
+    }
+    .calc-search:focus { border-color: var(--accent-cyan); }
+    .calc-search::placeholder { color: var(--dim); }
+    .tool-btn {
+        min-height: 46px; padding: 0 16px; font-size: 0.92rem; font-weight: 600;
+        color: var(--text); background: var(--bg-2); border: 1px solid var(--border);
+        border-radius: 10px; cursor: pointer; transition: border-color .15s, color .15s;
+    }
+    .tool-btn:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+    .tool-btn.on { border-color: var(--gold); color: var(--gold); }
+
+    .cat { border: 1px solid var(--border-subtle); border-radius: 12px; margin-bottom: 12px; background: rgba(30,41,59,.35); }
+    .cat > summary {
+        display: flex; align-items: center; gap: 12px; padding: 16px 18px;
+        cursor: pointer; list-style: none; font-weight: 600; font-size: 1.02rem;
+    }
+    .cat > summary::-webkit-details-marker { display: none; }
+    .cat > summary::after { content: "▾"; margin-left: auto; color: var(--dim); transition: transform .2s; }
+    .cat[open] > summary::after { transform: rotate(180deg); }
+    .cat-ico { font-size: 1.15rem; }
+    .cat-count {
+        font-size: 0.78rem; font-weight: 700; color: var(--gold);
+        background: rgba(212,175,55,.14); border-radius: 20px; padding: 2px 9px;
+    }
+    .cat-body { padding: 0 12px 12px; }
+
+    .row {
+        display: grid; grid-template-columns: 1fr auto auto; align-items: center;
+        gap: 12px; padding: 12px 8px; border-top: 1px solid rgba(51,65,85,.5);
+    }
+    .row:first-child { border-top: none; }
+    .row.has { background: rgba(56,189,248,.06); border-radius: 8px; }
+    .row-name { font-size: 0.96rem; line-height: 1.35; }
+    .row-note { display: block; font-size: 0.78rem; color: var(--dim); margin-top: 2px; }
+    .row-price { font-size: 0.9rem; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .row-price b { color: var(--text); font-weight: 600; }
+    .row-sum { display: block; font-size: 0.78rem; color: var(--gold); }
+    .step { display: flex; align-items: center; gap: 4px; }
+    .step button {
+        width: 38px; height: 38px; font-size: 1.15rem; line-height: 1;
+        color: var(--text); background: var(--bg-2); border: 1px solid var(--border);
+        border-radius: 8px; cursor: pointer;
+    }
+    .step button:active { background: var(--card); }
+    .step .qty { min-width: 34px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .step .qty.zero { color: var(--dim); font-weight: 500; }
+
+    .price-input {
+        width: 84px; padding: 8px; font-size: 0.9rem; text-align: right;
+        color: var(--text); background: var(--bg); border: 1px solid var(--border);
+        border-radius: 8px;
+    }
+
+    .calc-summary {
+        position: sticky; bottom: 0; z-index: 20; margin-top: 20px;
+        background: rgba(11,17,32,.96); border: 1px solid var(--border);
+        border-radius: 14px; padding: 16px 18px; backdrop-filter: blur(8px);
+    }
+    .sum-line { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--muted); padding: 3px 0; }
+    .sum-line b { color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
+    .sum-total {
+        display: flex; justify-content: space-between; align-items: baseline;
+        margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--border);
+    }
+    .sum-total span { font-size: 0.95rem; color: var(--muted); }
+    .sum-total b { font-size: 1.6rem; color: var(--gold); font-variant-numeric: tabular-nums; }
+    .sum-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .sum-controls select, .sum-controls input {
+        min-height: 40px; padding: 0 10px; font-size: 0.85rem; color: var(--text);
+        background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px;
+    }
+    .sum-controls input { width: 74px; }
+    .sum-actions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+    .sum-actions .btn { padding: 11px 20px; font-size: 0.92rem; flex: 1 1 150px; text-align: center; }
+    .calc-hint { font-size: 0.82rem; color: var(--dim); margin-top: 10px; line-height: 1.5; }
+
+    .custom-form { display: none; padding: 16px; border: 1px dashed var(--border); border-radius: 12px; margin-bottom: 12px; }
+    .custom-form.on { display: block; }
+    .cf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+    .cf-grid input, .cf-grid select {
+        width: 100%; min-height: 44px; padding: 0 12px; font-size: 0.92rem;
+        color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+    }
+    .cf-actions { margin-top: 12px; display: flex; gap: 8px; }
+    .cf-actions button { min-height: 44px; padding: 0 18px; border-radius: 8px; cursor: pointer; font-size: 0.92rem; font-weight: 600; }
+
+    .empty { color: var(--dim); font-size: 0.9rem; padding: 14px 4px; }
+
+    .print-doc { display: none; }
+    @media print {
+        body { background: #fff !important; color: #000 !important; }
+        nav, header, footer, section, .calc-tools, .cat, .custom-form, .calc-summary, .no-print, .calc-hint { display: none !important; }
+        .print-doc { display: block !important; font-family: 'Inter', Arial, sans-serif; color: #000; padding: 10px; }
+        .print-doc h1 { font-size: 19px; margin: 0 0 4px; }
+        .print-doc .pd-sub { font-size: 12px; color: #444; margin-bottom: 14px; }
+        .print-doc table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .print-doc th { text-align: left; border-bottom: 1.5px solid #000; padding: 6px 4px; }
+        .print-doc td { border-bottom: 1px solid #ddd; padding: 6px 4px; }
+        .print-doc td.num { text-align: right; white-space: nowrap; }
+        .print-doc .pd-total { margin-top: 14px; font-size: 16px; font-weight: 700; text-align: right; }
+        .print-doc .pd-note { margin-top: 12px; font-size: 11px; color: #555; }
+    }
+    @media (max-width: 520px) {
+        .row { grid-template-columns: 1fr auto; grid-template-areas: "name price" "step step"; row-gap: 8px; }
+        .row-name { grid-area: name; }
+        .row-price { grid-area: price; text-align: right; }
+        .step { grid-area: step; justify-content: flex-end; }
+        .step button { width: 44px; height: 44px; }
+        .cat > summary { padding: 14px 14px; }
+    }
+    </style>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();for (var j = 0; j < document.scripts.length; j++){if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=m.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)
+      })(window, document,"script","https://mc.yandex.ru/metrika/tag.js?id=111813753", "ym");
+      ym(111813753, "init", {
+        ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer",
+        referrer: document.referrer, url: location.href,
+        accurateTrackBounce:true, trackLinks:true
+      });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/111813753" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="studio.html">Студия</a></li>
+                <li><a href="about.html">О разработчике</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="uslugi.html">Услуги</a></li>
+                <li><a href="blog.html">Блог</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Калькулятор электромонтажных работ</h1>
+            <p class="subtitle">Отметьте работы — стоимость посчитается сразу. Цены ориентировочные, точная сумма — после осмотра.</p>
+            <div style="margin-top: 20px;">
+                <a class="btn btn-outline" href="uslugi.html">← Все услуги</a>
+            </div>
+        </div>
+    </header>
+
+    <section style="padding-top: 40px;">
+        <div class="container">
+            <div class="calc-wrap">
+
+                <div class="calc-tools no-print">
+                    <input class="calc-search" id="q" type="search" placeholder="Поиск: розетка, штроба, щит…" autocomplete="off">
+                    <button class="tool-btn" id="btnPrices" type="button">Мои цены</button>
+                    <button class="tool-btn" id="btnCustom" type="button">+ Своя работа</button>
+                    <button class="tool-btn" id="btnReset" type="button">Сброс</button>
+                </div>
+
+                <div class="custom-form" id="customForm">
+                    <div class="cf-grid">
+                        <input id="cfName" type="text" placeholder="Название работы" autocomplete="off">
+                        <select id="cfUnit">
+                            <option value="шт">шт</option>
+                            <option value="м.п.">м.п.</option>
+                            <option value="м²">м²</option>
+                            <option value="точка">точка</option>
+                            <option value="объект">объект</option>
+                        </select>
+                        <input id="cfPrice" type="number" inputmode="numeric" min="0" step="10" placeholder="Цена, ₽">
+                        <input id="cfQty" type="number" inputmode="numeric" min="1" step="1" value="1" placeholder="Кол-во">
+                    </div>
+                    <div class="cf-actions">
+                        <button class="btn" id="cfAdd" type="button">Добавить</button>
+                        <button class="btn btn-outline" id="cfCancel" type="button">Отмена</button>
+                    </div>
+                </div>
+
+                <div id="cats"></div>
+
+                <div class="calc-summary no-print">
+                    <div class="sum-line"><span>Работы без надбавок</span><b id="sBase">0 ₽</b></div>
+                    <div class="sum-line"><span>Сложность объекта</span><b id="sMult">×1,0</b></div>
+                    <div class="sum-line" id="discLine" style="display:none;"><span>Скидка</span><b id="sDisc">0%</b></div>
+                    <div class="sum-total"><span>Итого</span><b id="sTotal">0 ₽</b></div>
+
+                    <div class="sum-controls">
+                        <select id="selMult" aria-label="Сложность объекта">
+                            <option value="1">Объект простой</option>
+                            <option value="1.15">Объект средний (+15%)</option>
+                            <option value="1.3">Объект сложный (+30%)</option>
+                        </select>
+                        <input id="inDisc" type="number" min="0" max="50" step="5" value="0" aria-label="Скидка, %" placeholder="Скидка %">
+                        <select id="selRound" aria-label="Округление">
+                            <option value="0">Без округления</option>
+                            <option value="100">Округлить до 100</option>
+                            <option value="500">Округлить до 500</option>
+                            <option value="1000">Округлить до 1000</option>
+                        </select>
+                    </div>
+
+                    <div class="sum-actions">
+                        <button class="btn" id="btnCopy" type="button">Скопировать смету</button>
+                        <button class="btn btn-outline" id="btnPrint" type="button">Печать / PDF</button>
+                        <a class="btn btn-outline" href="tel:+79527965785">Позвонить</a>
+                    </div>
+
+                    <p class="calc-hint">Материалы не входят в расчёт. Выезд по Гусеву бесплатный при заказе. Цены правятся кнопкой «Мои цены» — они сохраняются в браузере.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container" style="max-width: 900px;">
+            <h2 style="font-size: 1.4rem; text-align: left; margin-bottom: 14px;">Как считается</h2>
+            <p style="color: var(--muted); line-height: 1.7; margin-bottom: 12px;">
+                Сумма — это количество работ, умноженное на цену за единицу. Дальше применяется
+                коэффициент сложности объекта: на простом объекте его нет, на среднем +15%, на сложном +30%.
+                Скидка и округление считаются последними, чтобы итог был круглым.
+            </p>
+            <p style="color: var(--muted); line-height: 1.7;">
+                Цены взяты из открытого прайса и скорректированы под Гусев. Они не заменяют смету:
+                на объекте видно то, чего не видно в списке — состояние стен, доступ к потолку,
+                старые сети. Поэтому итог здесь — ориентир, а точная сумма называется после осмотра.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Пряжников Александр Иванович · самозанятый · Гусев и Калининградская область · © 2026</p>
+        </div>
+    </footer>
+
+    <div class="print-doc" id="printDoc"></div>
+
+    <script>
+    (function () {
+        "use strict";
+
+        var CATS = [
+            {
+                id: "sockets", icon: "🔌", title: "Розетки и выключатели",
+                items: [
+                    { id: "socket_internal", name: "Розетка внутренняя", note: "в подрозетник, готовая точка", unit: "шт", price: 300 },
+                    { id: "socket_external", name: "Розетка наружная", note: "накладная, без подрозетника", unit: "шт", price: 200 },
+                    { id: "socket_ground", name: "Розетка с заземлением", unit: "шт", price: 300 },
+                    { id: "socket_double", name: "Розетка двойная", unit: "шт", price: 400 },
+                    { id: "switch_1", name: "Выключатель 1-клавишный", unit: "шт", price: 300 },
+                    { id: "switch_2", name: "Выключатель 2-клавишный", unit: "шт", price: 350 },
+                    { id: "switch_pass", name: "Выключатель проходной", unit: "шт", price: 550 }
+                ]
+            },
+            {
+                id: "light", icon: "💡", title: "Освещение",
+                items: [
+                    { id: "light_chandelier", name: "Люстра, потолочный светильник", note: "монтаж и подключение", unit: "шт", price: 500 }
+                ]
+            },
+            {
+                id: "chase", icon: "🧱", title: "Штробление и проводка",
+                items: [
+                    { id: "cable_open", name: "Прокладка кабеля открыто", note: "по стене или потолку", unit: "м.п.", price: 100 },
+                    { id: "cable_chase", name: "Прокладка кабеля в штробе", unit: "м.п.", price: 300 },
+                    { id: "chase_gypsum", name: "Штробление гипс, ГКЛ", note: "20×20 мм", unit: "м.п.", price: 320 },
+                    { id: "chase_brick", name: "Штробление кирпич", note: "20×20 мм", unit: "м.п.", price: 380 },
+                    { id: "chase_concrete", name: "Штробление бетон", note: "20×20 мм", unit: "м.п.", price: 400 },
+                    { id: "channel_40", name: "Кабель-канал до 40 мм", unit: "м.п.", price: 120 },
+                    { id: "channel_60", name: "Кабель-канал до 60 мм", unit: "м.п.", price: 150 },
+                    { id: "channel_100", name: "Кабель-канал до 100 мм", unit: "м.п.", price: 180 }
+                ]
+            },
+            {
+                id: "shield", icon: "⚡", title: "Щиты и автоматика",
+                items: [
+                    { id: "panel_12", name: "Сборка щита до 12 модулей", unit: "шт", price: 3500 },
+                    { id: "panel_24", name: "Сборка щита до 24 модулей", unit: "шт", price: 4500 },
+                    { id: "panel_36", name: "Сборка щита до 36 модулей", unit: "шт", price: 6500 },
+                    { id: "auto_1p", name: "Автомат 1-полюсный", unit: "шт", price: 350 },
+                    { id: "auto_2p", name: "Автомат 2-полюсный", unit: "шт", price: 450 },
+                    { id: "auto_3p", name: "Автомат 3-полюсный", unit: "шт", price: 550 },
+                    { id: "uzo_2p", name: "УЗО 2-полюсное", unit: "шт", price: 450 },
+                    { id: "uzo_4p", name: "УЗО 4-полюсное", unit: "шт", price: 550 }
+                ]
+            },
+            {
+                id: "ground", icon: "🌍", title: "Заземление и защита",
+                items: [
+                    { id: "ground_loop", name: "Контур заземления", note: "от 5000, по проекту", unit: "объект", price: 5000 }
+                ]
+            }
+        ];
+
+        var LS_STATE = "calc_state_v1";
+        var LS_PRICES = "calc_prices_v1";
+        var LS_CUSTOM = "calc_custom_v1";
+
+        var state = { qty: {}, mult: 1, disc: 0, round: 0 };
+        var prices = {};
+        var customs = [];
+        var editingPrices = false;
+
+        function load(key, fallback) {
+            try {
+                var raw = localStorage.getItem(key);
+                return raw ? JSON.parse(raw) : fallback;
+            } catch (e) {
+                return fallback;
+            }
+        }
+
+        function save(key, value) {
+            try {
+                localStorage.setItem(key, JSON.stringify(value));
+            } catch (e) { /* приватный режим — работаем без сохранения */ }
+        }
+
+        var saved = load(LS_STATE, null);
+        if (saved && typeof saved === "object") {
+            state.qty = saved.qty || {};
+            state.mult = Number(saved.mult) || 1;
+            state.disc = Number(saved.disc) || 0;
+            state.round = Number(saved.round) || 0;
+        }
+        prices = load(LS_PRICES, {}) || {};
+        customs = load(LS_CUSTOM, []) || [];
+
+        function saveState() { save(LS_STATE, state); }
+        function savePrices() { save(LS_PRICES, prices); }
+        function saveCustoms() { save(LS_CUSTOM, customs); }
+
+        function money(n) {
+            return Math.round(n).toLocaleString("ru-RU") + " ₽";
+        }
+
+        function priceOf(item) {
+            var p = prices[item.id];
+            return typeof p === "number" && p >= 0 ? p : item.price;
+        }
+
+        function allItems() {
+            var list = [];
+            CATS.forEach(function (c) {
+                c.items.forEach(function (it) {
+                    list.push({ id: it.id, name: it.name, note: it.note, unit: it.unit, price: priceOf(it) });
+                });
+            });
+            customs.forEach(function (c) {
+                list.push({ id: c.id, name: c.name, unit: c.unit, price: c.price, custom: true });
+            });
+            return list;
+        }
+
+        function findItem(id) {
+            var found = null;
+            allItems().forEach(function (it) { if (it.id === id) found = it; });
+            return found;
+        }
+
+        function qtyOf(id) { return state.qty[id] || 0; }
+
+        function calc() {
+            var base = 0;
+            allItems().forEach(function (it) {
+                base += qtyOf(it.id) * it.price;
+            });
+            var afterMult = base * state.mult;
+            var afterDisc = afterMult * (1 - state.disc / 100);
+            var total = afterDisc;
+            if (state.round > 0) {
+                total = Math.round(afterDisc / state.round) * state.round;
+            }
+            return { base: base, afterMult: afterMult, total: total };
+        }
+
+        // ---------- отрисовка ----------
+        var catsEl = document.getElementById("cats");
+
+        function rowHtml(item) {
+            var q = qtyOf(item.id);
+            var price = item.price;
+            var sum = q * price;
+            var priceCell = editingPrices
+                ? '<input class="price-input" type="number" min="0" step="10" data-price="' + item.id + '" value="' + price + '">'
+                : '<span class="row-price"><b>' + money(price) + '</b> / ' + item.unit +
+                  (sum > 0 ? '<span class="row-sum">= ' + money(sum) + '</span>' : '') + '</span>';
+
+            return '<div class="row' + (q > 0 ? " has" : "") + '" data-id="' + item.id + '">' +
+                '<div class="row-name">' + item.name +
+                    (item.note ? '<span class="row-note">' + item.note + '</span>' : '') +
+                '</div>' +
+                priceCell +
+                '<div class="step">' +
+                    '<button type="button" data-dec="' + item.id + '" aria-label="Убрать">−</button>' +
+                    '<span class="qty' + (q === 0 ? " zero" : "") + '">' + q + '</span>' +
+                    '<button type="button" data-inc="' + item.id + '" aria-label="Добавить">+</button>' +
+                '</div>' +
+            '</div>';
+        }
+
+        function render() {
+            var openIds = [];
+            Array.prototype.forEach.call(catsEl.querySelectorAll("details[open]"), function (d) {
+                var k = d.getAttribute("data-cat");
+                if (k) openIds.push(k);
+            });
+            function isOpen(key) {
+                return openIds.length ? openIds.indexOf(key) >= 0 : key === CATS[0].id;
+            }
+
+            var html = "";
+
+            CATS.forEach(function (cat) {
+                var count = 0;
+                var rows = cat.items.map(function (it) {
+                    count += qtyOf(it.id);
+                    return rowHtml({ id: it.id, name: it.name, note: it.note, unit: it.unit, price: priceOf(it) });
+                }).join("");
+
+                html += '<details class="cat" data-cat="' + cat.id + '"' + (isOpen(cat.id) ? " open" : "") + '>' +
+                    '<summary><span class="cat-ico">' + cat.icon + '</span>' + cat.title +
+                        (count > 0 ? '<span class="cat-count" data-count="' + cat.id + '">' + count + '</span>' : '<span class="cat-count" data-count="' + cat.id + '" hidden>' + count + '</span>') +
+                    '</summary>' +
+                    '<div class="cat-body">' + rows + '</div>' +
+                '</details>';
+            });
+
+            if (customs.length) {
+                var cr = customs.map(function (c) {
+                    return rowHtml({ id: c.id, name: c.name, unit: c.unit, price: c.price });
+                }).join("");
+                html += '<details class="cat" data-cat="custom" open>' +
+                    '<summary><span class="cat-ico">✏️</span>Мои работы<span class="cat-count">свои</span></summary>' +
+                    '<div class="cat-body">' + cr + '</div>' +
+                '</details>';
+            }
+
+            catsEl.innerHTML = html;
+            applyFilter();
+            updateSummary();
+        }
+
+        function applyFilter() {
+            var needle = (document.getElementById("q").value || "").trim().toLowerCase();
+            var visible = {};
+            Array.prototype.forEach.call(catsEl.querySelectorAll(".row"), function (row) {
+                var nameEl = row.querySelector(".row-name");
+                var name = nameEl ? nameEl.textContent.toLowerCase() : "";
+                var ok = !needle || name.indexOf(needle) >= 0;
+                row.hidden = !ok;
+                if (ok) {
+                    var cat = row.closest(".cat");
+                    if (cat) visible[cat.getAttribute("data-cat")] = true;
+                }
+            });
+            Array.prototype.forEach.call(catsEl.querySelectorAll(".cat"), function (cat) {
+                var key = cat.getAttribute("data-cat");
+                var has = !!visible[key];
+                cat.hidden = !!needle && !has;
+                if (needle && has) cat.open = true;
+            });
+        }
+
+        function updateRow(id) {
+            var item = findItem(id);
+            var old = catsEl.querySelector('.row[data-id="' + id + '"]');
+            if (!item || !old) { render(); return; }
+
+            var tmp = document.createElement("div");
+            tmp.innerHTML = rowHtml(item);
+            var fresh = tmp.firstChild;
+            old.parentNode.replaceChild(fresh, old);
+
+            var catEl = fresh.closest(".cat");
+            if (catEl && catEl.getAttribute("data-cat") !== "custom") {
+                var catId = catEl.getAttribute("data-cat");
+                var cat = null;
+                CATS.forEach(function (c) { if (c.id === catId) cat = c; });
+                if (cat) {
+                    var count = 0;
+                    cat.items.forEach(function (it) { count += qtyOf(it.id); });
+                    var badge = catEl.querySelector(".cat-count");
+                    if (badge) {
+                        badge.textContent = count;
+                        badge.hidden = count === 0;
+                    }
+                }
+            }
+            updateSummary();
+        }
+
+        function updateSummary() {
+            var r = calc();
+            document.getElementById("sBase").textContent = money(r.base);
+            document.getElementById("sMult").textContent = "×" + String(state.mult).replace(".", ",");
+            document.getElementById("sTotal").textContent = money(r.total);
+
+            var discLine = document.getElementById("discLine");
+            if (state.disc > 0) {
+                discLine.style.display = "";
+                document.getElementById("sDisc").textContent = state.disc + "%";
+            } else {
+                discLine.style.display = "none";
+            }
+        }
+
+        // ---------- события ----------
+        catsEl.addEventListener("click", function (e) {
+            var inc = e.target.closest("[data-inc]");
+            var dec = e.target.closest("[data-dec]");
+            if (!inc && !dec) return;
+            var id = (inc || dec).getAttribute(inc ? "data-inc" : "data-dec");
+            var old = qtyOf(id);
+            var next = inc ? old + 1 : Math.max(0, old - 1);
+            if (next === 0) delete state.qty[id]; else state.qty[id] = next;
+            saveState();
+            updateRow(id);
+        });
+
+        catsEl.addEventListener("change", function (e) {
+            var inp = e.target.closest("[data-price]");
+            if (!inp) return;
+            var id = inp.getAttribute("data-price");
+            var val = Math.max(0, Number(inp.value) || 0);
+            var base = findItem(id);
+            var original = null;
+            CATS.forEach(function (c) {
+                c.items.forEach(function (it) { if (it.id === id) original = it.price; });
+            });
+            if (original === null) {
+                customs.forEach(function (c) { if (c.id === id) { c.price = val; original = val; } });
+                saveCustoms();
+            } else if (val === original) {
+                delete prices[id];
+                savePrices();
+            } else {
+                prices[id] = val;
+                savePrices();
+            }
+            updateRow(id);
+        });
+
+        document.getElementById("btnPrices").addEventListener("click", function () {
+            editingPrices = !editingPrices;
+            this.classList.toggle("on", editingPrices);
+            this.textContent = editingPrices ? "Готово" : "Мои цены";
+            render();
+        });
+
+        document.getElementById("btnCustom").addEventListener("click", function () {
+            document.getElementById("customForm").classList.toggle("on");
+            document.getElementById("cfName").focus();
+        });
+
+        document.getElementById("cfCancel").addEventListener("click", function () {
+            document.getElementById("customForm").classList.remove("on");
+        });
+
+        document.getElementById("cfAdd").addEventListener("click", function () {
+            var name = document.getElementById("cfName").value.trim();
+            var unit = document.getElementById("cfUnit").value;
+            var price = Math.max(0, Number(document.getElementById("cfPrice").value) || 0);
+            var qty = Math.max(1, Number(document.getElementById("cfQty").value) || 1);
+            if (!name) { document.getElementById("cfName").focus(); return; }
+            if (!price) { document.getElementById("cfPrice").focus(); return; }
+
+            var id = "c_" + Date.now();
+            customs.push({ id: id, name: name, unit: unit, price: price });
+            state.qty[id] = qty;
+            saveCustoms();
+            saveState();
+
+            document.getElementById("cfName").value = "";
+            document.getElementById("cfPrice").value = "";
+            document.getElementById("cfQty").value = "1";
+            document.getElementById("customForm").classList.remove("on");
+            render();
+        });
+
+        document.getElementById("btnReset").addEventListener("click", function () {
+            state = { qty: {}, mult: 1, disc: 0, round: 0 };
+            saveState();
+            document.getElementById("selMult").value = "1";
+            document.getElementById("inDisc").value = "0";
+            document.getElementById("selRound").value = "0";
+            render();
+        });
+
+        document.getElementById("selMult").addEventListener("change", function () {
+            state.mult = Number(this.value) || 1;
+            saveState();
+            updateSummary();
+        });
+
+        document.getElementById("selRound").addEventListener("change", function () {
+            state.round = Number(this.value) || 0;
+            saveState();
+            updateSummary();
+        });
+
+        document.getElementById("q").addEventListener("input", applyFilter);
+
+        function syncDisc() {
+            var el = document.getElementById("inDisc");
+            var v = Math.min(50, Math.max(0, Number(el.value) || 0));
+            if (el.value !== "" && Number(el.value) !== v) el.value = v;
+            state.disc = v;
+            saveState();
+            updateSummary();
+        }
+        document.getElementById("inDisc").addEventListener("input", syncDisc);
+        document.getElementById("inDisc").addEventListener("change", syncDisc);
+
+        // ---------- смета текстом и печать ----------
+        function buildRows() {
+            var rows = [];
+            allItems().forEach(function (it) {
+                var q = qtyOf(it.id);
+                if (q > 0) rows.push({ name: it.name, unit: it.unit, qty: q, price: it.price, sum: q * it.price });
+            });
+            return rows;
+        }
+
+        function buildText() {
+            var rows = buildRows();
+            var r = calc();
+            if (!rows.length) return "";
+            var lines = [];
+            lines.push("Смета на электромонтажные работы");
+            lines.push("Пряжников Александр · Гусев · 8 952 796-57-85");
+            lines.push("Дата: " + new Date().toLocaleDateString("ru-RU"));
+            lines.push("");
+            rows.forEach(function (row, i) {
+                lines.push((i + 1) + ". " + row.name + " — " + row.qty + " " + row.unit +
+                    " × " + money(row.price) + " = " + money(row.sum));
+            });
+            lines.push("");
+            lines.push("Работы: " + money(r.base));
+            if (state.mult !== 1) lines.push("Сложность объекта: ×" + String(state.mult).replace(".", ","));
+            if (state.disc > 0) lines.push("Скидка: " + state.disc + "%");
+            lines.push("ИТОГО: " + money(r.total));
+            lines.push("");
+            lines.push("Материалы не входят. Выезд по Гусеву бесплатный при заказе.");
+            return lines.join("\n");
+        }
+
+        function copyText(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(function () { flash("Смета скопирована"); },
+                    function () { fallbackCopy(text); });
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        function fallbackCopy(text) {
+            var ta = document.createElement("textarea");
+            ta.value = text;
+            ta.style.position = "fixed";
+            ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand("copy"); flash("Смета скопирована"); }
+            catch (e) { flash("Не удалось скопировать"); }
+            document.body.removeChild(ta);
+        }
+
+        var toastTimer = null;
+        function flash(message) {
+            var el = document.getElementById("toast");
+            if (!el) {
+                el = document.createElement("div");
+                el.id = "toast";
+                el.style.cssText = "position:fixed;left:50%;bottom:28px;transform:translateX(-50%);" +
+                    "background:#1e293b;color:#f1f5f9;border:1px solid #334155;border-radius:10px;" +
+                    "padding:12px 20px;font-size:.9rem;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.4)";
+                document.body.appendChild(el);
+            }
+            el.textContent = message;
+            el.style.display = "block";
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(function () { el.style.display = "none"; }, 2200);
+        }
+
+        document.getElementById("btnCopy").addEventListener("click", function () {
+            var text = buildText();
+            if (!text) { flash("Сначала добавьте работы"); return; }
+            copyText(text);
+        });
+
+        document.getElementById("btnPrint").addEventListener("click", function () {
+            var rows = buildRows();
+            var r = calc();
+            if (!rows.length) { flash("Сначала добавьте работы"); return; }
+
+            var trs = rows.map(function (row, i) {
+                return "<tr><td>" + (i + 1) + "</td><td>" + row.name + "</td>" +
+                    '<td class="num">' + row.qty + " " + row.unit + "</td>" +
+                    '<td class="num">' + money(row.price) + "</td>" +
+                    '<td class="num">' + money(row.sum) + "</td></tr>";
+            }).join("");
+
+            document.getElementById("printDoc").innerHTML =
+                "<h1>Смета на электромонтажные работы</h1>" +
+                '<p class="pd-sub">Пряжников Александр Иванович · Гусев · 8 952 796-57-85 · ' +
+                    new Date().toLocaleDateString("ru-RU") + "</p>" +
+                "<table><thead><tr><th>№</th><th>Работа</th><th>Кол-во</th><th>Цена</th><th>Сумма</th></tr></thead>" +
+                "<tbody>" + trs + "</tbody></table>" +
+                '<p class="pd-total">Итого: ' + money(r.total) + "</p>" +
+                '<p class="pd-note">Материалы не входят в расчёт. Итог ориентировочный, точная сумма — после осмотра объекта.</p>';
+
+            window.print();
+        });
+
+        // ---------- стартовые значения ----------
+        document.getElementById("selMult").value = String(state.mult);
+        document.getElementById("inDisc").value = state.disc;
+        document.getElementById("selRound").value = String(state.round);
+
+        render();
+    })();
+    </script>
+</body>
+</html>
